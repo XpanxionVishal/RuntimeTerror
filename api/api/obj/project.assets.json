@@ -4877,11 +4877,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Xperiments 4.0\\Project\\api\\api\\api\\api.csproj",
+      "projectUniqueName": "D:\\Xperiments 4.0\\Project\\RuntimeTerror\\api\\api\\api.csproj",
       "projectName": "api",
-      "projectPath": "D:\\Xperiments 4.0\\Project\\api\\api\\api\\api.csproj",
+      "projectPath": "D:\\Xperiments 4.0\\Project\\RuntimeTerror\\api\\api\\api.csproj",
       "packagesPath": "C:\\Users\\vraut\\.nuget\\packages\\",
-      "outputPath": "D:\\Xperiments 4.0\\Project\\api\\api\\api\\obj\\",
+      "outputPath": "D:\\Xperiments 4.0\\Project\\RuntimeTerror\\api\\api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
