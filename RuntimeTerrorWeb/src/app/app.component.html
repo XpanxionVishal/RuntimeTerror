@@ -1,27 +1,27 @@
-<form style="height: 98vh; background-color: aqua;">
-    <div class="p-grid c">
-        <div class="p-sm-12 ">
-            <p-tabMenu [model]="items" [activeItem]="items[0]"></p-tabMenu>
-        </div>
-        <div class="p-col-12 p-md-6 p-lg-6">
-            <p-card class="p-card">
-                Content
-            </p-card>
-        </div>
-        <div class="p-col-12 p-md-6 p-lg-6">
-            <p-card class="card2">
-                Content
-            </p-card>
-        </div>
-        <div class="p-col-12 p-md-6 p-lg-6">
-            <p-card class="p-card">
-                Content
-            </p-card>
-        </div>
-        <div class="p-col-12 p-md-6 p-lg-6">
-            <p-card class="card2">
-                Content
-            </p-card>
+<form style="height: 97vh;background-color: aqua;overflow: hidden;">
+    <div class="p-sm-12 ">
+        <!-- <p-tabMenu [model]="items" [activeItem]="items[0]"></p-tabMenu> -->
+    </div>
+    <div class="p-grid">
+        <div class="p-col-12 p-md-3 p-lg-3"><label>Owner Name</label></div>
+        <div class="p-col-12 p-md-3 p-lg-3"><input type="text" pInputText /></div>
+        <div class="p-col-12 p-md-3 p-lg-3"><label>Contact Number</label></div>
+        <div class="p-col-12 p-md-3 p-lg-3"><input type="text" pInputText /></div>
+        <div class="p-col-12 p-md-3 p-lg-3"><label>Property Address</label></div>
+        <div class="p-col-12 p-md-3 p-lg-3"><textarea pInputTextarea></textarea></div>
+        <div class="p-col-12 p-md-3 p-lg-3"><label>Cost Per Day</label></div>
+        <div class="p-col-12 p-md-3 p-lg-3"><input type="text" pInputText /></div>
+        <div class="p-col-12 p-md-3 p-lg-3">
+            <!-- <p-fileUpload name="myfile[]" multiple="multiple">choose</p-fileUpload> -->
+            <!-- <p-fileUpload name="demo[]" maxFileSize="1000000"> -->
+            <!-- <p-fileUpload #fileInput name="templateFile[]" accept=".xlsx,.xls" chooseLabel="Browse/Drag"
+                customUpload="true" (uploadHandler)="onTemplateUpload()">
+                <ng-template pTemplate="content">
+                    <ul *ngIf="uploadedFiles.length">
+                        <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                    </ul>
+                </ng-template>
+            </p-fileUpload> -->
         </div>
     </div>
 </form>
