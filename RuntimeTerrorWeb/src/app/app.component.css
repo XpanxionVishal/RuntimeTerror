@@ -1,0 +1,8 @@
+html {
+    height: -webkit-fill-available;
+    background-color: #f7faeb;
+    /* height: 100%; */
+}
+.c{
+    background-color: blue;
+}
