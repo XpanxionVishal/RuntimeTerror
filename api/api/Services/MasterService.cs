@@ -20,5 +20,15 @@ namespace api.Services
         {
             return masterRepository.GetCities(); ;
         }
+
+        public List<AreaDTO> GetAreas(int cityId)
+        {
+            return masterRepository.GetAreas(cityId);
+        }
+
+        public List<PropertyTypeDTO> GetPropertyTypes()
+        {
+            return masterRepository.GetPropertyTypes();
+        }
     }
 }

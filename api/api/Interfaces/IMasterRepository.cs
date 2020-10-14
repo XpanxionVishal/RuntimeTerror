@@ -9,5 +9,7 @@ namespace api.Interfaces
     public interface IMasterRepository
     {
         List<CityDTO> GetCities();
+        List<AreaDTO> GetAreas(int cityId);
+        List<PropertyTypeDTO> GetPropertyTypes();
     }
 }

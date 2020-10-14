@@ -24,5 +24,17 @@ namespace api.Controllers
         {
             return this.masterService.GetCities();
         }
+
+        [HttpGet, Route("GetAreas/{cityId}")]
+        public List<AreaDTO> GetAreas(int cityId)
+        {
+            return this.masterService.GetAreas(cityId);
+        }
+
+        [HttpGet, Route("GetPropertyTypes")]
+        public List<PropertyTypeDTO> GetPropertyTypes()
+        {
+            return this.masterService.GetPropertyTypes();
+        }
     }
 }

@@ -8,7 +8,7 @@ using api.Interfaces;
 
 namespace api.Repos
 {
-    public class MasterRepository: IMasterRepository
+    public class MasterRepository : IMasterRepository
     {
         private readonly APIDBContext apiContext;
 
@@ -26,6 +26,28 @@ namespace api.Repos
                         CityName = c.CityName
                     }
                 ).ToList();
+        }
+
+        public List<AreaDTO> GetAreas(int cityId)
+        {
+            return (from a in this.apiContext.Area
+                    where a.CityId == cityId
+                    select new AreaDTO()
+                    {
+                        AreaId = a.AreaId,
+                        AreaName = a.AreaName,
+                        CityId = cityId
+                    }).ToList();
+        }
+
+        public List<PropertyTypeDTO> GetPropertyTypes()
+        {
+            return (from pt in this.apiContext.PropertyType
+                    select new PropertyTypeDTO()
+                    {
+                        TypeId = pt.TypeId,
+                        TypeName = pt.TypeName
+                    }).ToList();
         }
     }
 }
