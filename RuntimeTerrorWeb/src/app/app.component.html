@@ -1,27 +1,17 @@
-<form style="height: 98vh; background-color: aqua;">
-    <div class="p-grid c">
-        <div class="p-sm-12 ">
-            <p-tabMenu [model]="items" [activeItem]="items[0]"></p-tabMenu>
+<form style="height: 97vh;background-color: #ffa1a1 ;overflow: hidden;">
+    <div class="p-sm-12 ">
+        <div class="menu">
+            <span (click)="accomodation()" style="margin: 0em 1em 0 3em" class="menus">Find
+                Accomodation</span>
+            <span (click)="postAd()" class="menus">Post An Ad</span>
         </div>
-        <div class="p-col-12 p-md-6 p-lg-6">
-            <p-card class="p-card">
-                Content
-            </p-card>
+    </div>
+    <div class="p-grid">
+        <div *ngIf="isAccomodation">
+            <app-find-accomodation></app-find-accomodation>
         </div>
-        <div class="p-col-12 p-md-6 p-lg-6">
-            <p-card class="card2">
-                Content
-            </p-card>
-        </div>
-        <div class="p-col-12 p-md-6 p-lg-6">
-            <p-card class="p-card">
-                Content
-            </p-card>
-        </div>
-        <div class="p-col-12 p-md-6 p-lg-6">
-            <p-card class="card2">
-                Content
-            </p-card>
+        <div *ngIf="isPostAd">
+            <app-post-ad></app-post-ad>
         </div>
     </div>
 </form>
