@@ -8,8 +8,20 @@ import { MenuItem } from 'primeng/api';
 })
 export class PostAdComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+  ) {
+    this.cities = [
+      { label: 'Select City', value: null },
+      { label: 'New York', value: { id: 1, name: 'New York', code: 'NY' } },
+      { label: 'Rome', value: { id: 2, name: 'Rome', code: 'RM' } },
+      { label: 'London', value: { id: 3, name: 'London', code: 'LDN' } },
+      { label: 'Istanbul', value: { id: 4, name: 'Istanbul', code: 'IST' } },
+      { label: 'Paris', value: { id: 5, name: 'Paris', code: 'PRS' } }
+    ];
+  }
+  cities: any;
   items: MenuItem[];
+  uploadedFiles: any[] = [];
 
   ngOnInit() {
     this.items = [
@@ -20,4 +32,11 @@ export class PostAdComponent implements OnInit {
       { label: 'Settings', icon: 'pi pi-fw pi-cog' }
     ];
   }
+  // onUpload(event) {
+  //   for (let file of event.files) {
+  //     this.uploadedFiles.push(file);
+  //   }
+
+  //   this.messageService.add({ severity: 'info', summary: 'File Uploaded', detail: '' });
+  // }
 }

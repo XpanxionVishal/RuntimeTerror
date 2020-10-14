@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+// import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +8,20 @@ import { MenuItem } from 'primeng/api';
 })
 export class AppComponent {
   title = 'RuntimeTerrorWeb';
-  items: MenuItem[];
+  isPostAd = false;
+  isAccomodation = false;
 
   ngOnInit() {
-      this.items = [
-          {label: 'Home', icon: 'pi pi-fw pi-home'},
-          {label: 'Calendar', icon: 'pi pi-fw pi-calendar'},
-          {label: 'Edit', icon: 'pi pi-fw pi-pencil'},
-          {label: 'Documentation', icon: 'pi pi-fw pi-file'},
-          {label: 'Settings', icon: 'pi pi-fw pi-cog'}
-      ];
+    this.isAccomodation = true;
+  }
+  accomodation() {
+    this.isAccomodation = true;
+    this.isPostAd = false;
+
+  }
+
+  postAd() {
+    this.isPostAd = true;
+    this.isAccomodation = false;
   }
 }

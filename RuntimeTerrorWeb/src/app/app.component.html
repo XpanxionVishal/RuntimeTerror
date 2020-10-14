@@ -1,8 +1,17 @@
-<form style="height: 97vh;background-color: aqua;overflow: hidden;">
+<form style="height: 97vh;background-color: #ffa1a1 ;overflow: hidden;">
     <div class="p-sm-12 ">
-        <!-- <p-tabMenu [model]="items" [activeItem]="items[0]"></p-tabMenu> -->
+        <div class="menu">
+            <span (click)="accomodation()" style="margin: 0em 1em 0 3em" class="menus">Find
+                Accomodation</span>
+            <span (click)="postAd()" class="menus">Post An Ad</span>
+        </div>
     </div>
     <div class="p-grid">
-        <app-post-ad></app-post-ad>
+        <div *ngIf="isAccomodation">
+            <app-find-accomodation></app-find-accomodation>
+        </div>
+        <div *ngIf="isPostAd">
+            <app-post-ad></app-post-ad>
+        </div>
     </div>
 </form>

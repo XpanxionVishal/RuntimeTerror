@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+.p-multiselect {
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    background-color: #ffffff;
+    position: relative;
+    user-select: none;
+    width: 100%;
+}
+.p-multiselect-item {
+    cursor: pointer;
+    font-weight: 400;
+    background-color: #ffffff;
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+}
