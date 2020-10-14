@@ -9,10 +9,12 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 // import {DropdownModule} from 'primeng/dropdown';
 import {FileUploadModule} from 'primeng/fileupload';
+import { PostAdComponent } from './post-ad/post-ad.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PostAdComponent
   ],
   imports: [
     BrowserModule,
