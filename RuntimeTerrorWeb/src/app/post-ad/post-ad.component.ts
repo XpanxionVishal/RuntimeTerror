@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { IUserListResult } from '../domain/IUserListResult';
 
 @Component({
   selector: 'app-post-ad',
@@ -9,7 +11,22 @@ import { MenuItem } from 'primeng/api';
 export class PostAdComponent implements OnInit {
 
   constructor(
+    private http: HttpClient
   ) {
+
+  }
+
+  @ViewChild('fileInput') fileInput;
+  cities: any;
+  items: MenuItem[];
+  uploadedFiles: any[] = [];
+  fileModel: any = {
+    fileContent: ''
+  };
+  public progress: number;
+  public message: string;
+
+  ngOnInit() {
     this.cities = [
       { label: 'Select City', value: null },
       { label: 'New York', value: { id: 1, name: 'New York', code: 'NY' } },
@@ -18,12 +35,7 @@ export class PostAdComponent implements OnInit {
       { label: 'Istanbul', value: { id: 4, name: 'Istanbul', code: 'IST' } },
       { label: 'Paris', value: { id: 5, name: 'Paris', code: 'PRS' } }
     ];
-  }
-  cities: any;
-  items: MenuItem[];
-  uploadedFiles: any[] = [];
 
-  ngOnInit() {
     this.items = [
       { label: 'Home', icon: 'pi pi-fw pi-home' },
       { label: 'Calendar', icon: 'pi pi-fw pi-calendar' },
@@ -32,11 +44,21 @@ export class PostAdComponent implements OnInit {
       { label: 'Settings', icon: 'pi pi-fw pi-cog' }
     ];
   }
-  // onUpload(event) {
-  //   for (let file of event.files) {
-  //     this.uploadedFiles.push(file);
-  //   }
 
-  //   this.messageService.add({ severity: 'info', summary: 'File Uploaded', detail: '' });
-  // }
+  onTemplateUpload() {
+    const files = this.fileInput.files;
+    this.fileModel.fileContent = files;
+    const formData = new FormData();
+
+    for (const file of files) {
+      formData.append('file.png', file);
+    }
+
+    const headers = new HttpHeaders().append('Content-Disposition', 'multipart/form-data');
+
+    this.http.post('https://localhost:5001/api/Property/SaveProperty',
+      formData, { headers }).subscribe(event => {
+        console.log(event);
+      });
+  }
 }

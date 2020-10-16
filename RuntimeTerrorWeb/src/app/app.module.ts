@@ -8,11 +8,12 @@ import { ButtonModule } from 'primeng/button';
 import { TabMenuModule } from 'primeng/tabmenu';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {DropdownModule} from 'primeng/dropdown';
-// import {FileUploadModule} from 'primeng/fileupload';
+import {FileUploadModule} from 'primeng/fileupload';
 import { PostAdComponent } from './post-ad/post-ad.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FindAccomodationComponent } from './find-accomodation/find-accomodation.component';
 import {MultiSelectModule} from 'primeng/multiselect';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,10 +29,11 @@ import {MultiSelectModule} from 'primeng/multiselect';
     ButtonModule,
     TabMenuModule,
     InputTextareaModule,
-    // FileUploadModule,
+    FileUploadModule,
     DropdownModule,
     MultiSelectModule,
     BrowserAnimationsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
