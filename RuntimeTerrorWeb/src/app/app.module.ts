@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { GalleriaModule } from 'primeng/galleria';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import {EncrDecrService} from '../services/encr-decr.service';
 
 
 @NgModule({
@@ -45,7 +46,7 @@ import { LoginComponent } from './login/login.component';
     GalleriaModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [EncrDecrService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

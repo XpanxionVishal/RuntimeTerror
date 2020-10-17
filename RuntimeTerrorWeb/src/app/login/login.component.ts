@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUser } from '../domain/IUser';
 import { AuthService } from '../../services/auth.service';
+import { EncrDecrService } from '../../services/encr-decr.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     public authService: AuthService,
-    private http: HttpClient
+    private http: HttpClient,
+    private EncrDecr: EncrDecrService
   ) { }
 
   ngOnInit(): void {
@@ -42,6 +44,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     else {
+      formData.password = this.EncrDecr.set('123456$#@$^@1ERF', formData.password);
       this.http.post('https://localhost:5001/api/Login/CheckIsUserLoggedIn',
         formData).subscribe(event => {
           if (event) {
