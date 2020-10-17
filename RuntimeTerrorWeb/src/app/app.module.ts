@@ -13,6 +13,8 @@ import { PostAdComponent } from './post-ad/post-ad.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FindAccomodationComponent } from './find-accomodation/find-accomodation.component';
 import {MultiSelectModule} from 'primeng/multiselect';
+import {TableModule} from 'primeng/table';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import {MultiSelectModule} from 'primeng/multiselect';
     // FileUploadModule,
     DropdownModule,
     MultiSelectModule,
+    TableModule,
     BrowserAnimationsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

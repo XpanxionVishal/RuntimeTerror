@@ -9,7 +9,9 @@
     background-color: #ffffff;
     position: relative;
     user-select: none;
-    width: 100%;
+    width: 80%;
+    height: 3.8vh;
+    border-radius: 3px;
 }
 .p-multiselect-item {
     cursor: pointer;
