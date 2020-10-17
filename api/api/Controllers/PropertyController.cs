@@ -5,14 +5,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Http;
 
 namespace api.Controllers
 {
     [ApiController]
     [Route("api/Property")]
-    public class PropertyController
+    public class PropertyController: ControllerBase
     {
         private readonly IPropertyService propertyService;
 
@@ -28,9 +27,19 @@ namespace api.Controllers
         }
 
         [HttpPost, Route("SaveProperty")]
-        public void SaveProperty([FromForm(Name = "file.png")] List<IFormFile> filesList, [FromForm(Name = "property")] PropertyDTO property)
+        public void SaveProperty([FromForm(Name = "file.png")] List<IFormFile> filesList, [FromForm(Name = "property")] string property)
         {
-            this.propertyService.SaveProperty(filesList, property);
+            PropertyDTO propertyDTO = new PropertyDTO();
+            var jsonObject = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(property);
+
+            propertyDTO.AreaId = (int)jsonObject["areaId"].Value;
+            propertyDTO.Address = jsonObject["address"].Value;
+            propertyDTO.CostPerDay = (decimal)jsonObject["costPerDay"].Value;
+            propertyDTO.OwnerName = jsonObject["ownerName"].Value;
+            propertyDTO.PostedByUserId = (int)jsonObject["postedByUserId"].Value;
+            propertyDTO.PropertyTypeId = (int)jsonObject["propertyTypeId"].Value;
+
+            this.propertyService.SaveProperty(filesList, propertyDTO);
         }
     }
 }

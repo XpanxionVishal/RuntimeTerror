@@ -203,7 +203,7 @@ export class PostAdComponent implements OnInit {
       occupiedBy: 1,
       propertyPhotos: null
     };
-    formData.append('property', property);
+    formData.append('property', JSON.stringify(property));
     this.appService.postAd(formData).subscribe(res => {
       console.log(this.postAdForm.value);
       console.log(res);
