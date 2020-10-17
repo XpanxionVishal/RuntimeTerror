@@ -4,6 +4,7 @@
             <span (click)="accomodation()" style="margin: 0em 1em 0 3em" class="menus">Find
                 Accomodation</span>
             <span (click)="postAd()" class="menus">Post An Ad</span>
+            <span (click)="login()" class="menus">Login</span>
         </div>
     </div>
     <div class="p-grid">
@@ -12,6 +13,9 @@
         </div>
         <div *ngIf="isPostAd">
             <app-post-ad></app-post-ad>
+        </div>
+        <div *ngIf="isLogin">
+            <app-login></app-login>
         </div>
     </div>
 </form>

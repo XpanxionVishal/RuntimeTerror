@@ -65,12 +65,14 @@ namespace api
         {
             services.AddScoped<IMasterRepository, MasterRepository>();
             services.AddScoped<IPropertyRepository, PropertyRepository>();
+            services.AddScoped<ILoginRepository, LoginRepository>();
         }
 
         public void AddServices(IServiceCollection services)
         {
             services.AddScoped<IMasterService, MasterService>();
             services.AddScoped<IPropertyService, PropertyService>();
+            services.AddScoped<ILoginService, LoginService>();
         }
     }
 }

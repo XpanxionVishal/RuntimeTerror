@@ -17,13 +17,15 @@ import { TableModule } from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
 import { GalleriaModule } from 'primeng/galleria';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PostAdComponent,
-    FindAccomodationComponent
+    FindAccomodationComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
