@@ -28,26 +28,9 @@ namespace api.Controllers
         }
 
         [HttpPost, Route("SaveProperty")]
-        public void SaveProperty([FromForm(Name = "file.png")] List<IFormFile> file)
+        public void SaveProperty([FromForm(Name = "file.png")] List<IFormFile> filesList, [FromBody] PropertyDTO property)
         {
-            List<PropertyPhotoDTO> propertyPhotos = new List<PropertyPhotoDTO>();
-
-            file.ForEach(f =>
-            {
-                using (var stream = new MemoryStream())
-                {
-                    PropertyPhotoDTO photo = new PropertyPhotoDTO();
-                    byte[] byteFile = null;
-                    f.CopyTo(stream);
-                    byteFile = stream.ToArray();
-                    photo.Photo = byteFile;
-                    photo.PropertyId = 1;
-                    photo.PropertyPhotoId = 1;
-                    propertyPhotos.Add(photo);
-                }
-            });
-
-            this.propertyService.SaveProperty(propertyPhotos);
+            this.propertyService.SaveProperty(filesList, property);
         }
     }
 }
