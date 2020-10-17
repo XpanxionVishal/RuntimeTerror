@@ -8,7 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { TabMenuModule } from 'primeng/tabmenu';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {DropdownModule} from 'primeng/dropdown';
-// import {FileUploadModule} from 'primeng/fileupload';
+import {FileUploadModule} from 'primeng/fileupload';
 import { PostAdComponent } from './post-ad/post-ad.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FindAccomodationComponent } from './find-accomodation/find-accomodation.component';
@@ -30,7 +30,7 @@ import {HttpClientModule} from '@angular/common/http';
     ButtonModule,
     TabMenuModule,
     InputTextareaModule,
-    // FileUploadModule,
+    FileUploadModule,
     DropdownModule,
     MultiSelectModule,
     TableModule,

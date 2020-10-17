@@ -14,7 +14,16 @@
     <div class="p-col-12 p-md-1 p-lg-2"></div>
     <div class="p-col-12 p-md-2 p-lg-1"><label>Upload Pictures</label></div>
     <div class="p-col-12 p-md-9 p-lg-9">
-        <input type="file" multiple class="upload" />
+        <!-- <input type="file" multiple class="upload" /> -->
+        <p-fileUpload #fileInput name="templateFile[]" accept=".png" chooseLabel="Browse/Drag" customUpload="true" multiple="multiple"
+            (uploadHandler)="onTemplateUpload()">
+            <ng-template pTemplate="content">
+                <ul *ngIf="uploadedFiles.length">
+                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                </ul>
+            </ng-template>
+        </p-fileUpload>
+        <!-- <p-fileUpload name="myfile[]"  multiple="multiple"></p-fileUpload> -->
     </div>
     <div class="p-col-12 p-md-12 p-lg-12 button" style="    text-align: center;">
         <button pButton type="button" label="Post Ad" class="p-button-warning"></button>

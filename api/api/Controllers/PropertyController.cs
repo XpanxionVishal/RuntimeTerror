@@ -1,10 +1,12 @@
 ﻿using api.DTOs;
 using api.Interfaces;
-using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Http;
 
 namespace api.Controllers
 {
@@ -23,6 +25,24 @@ namespace api.Controllers
         public List<PropertyDTO> GetProperties()
         {
             return this.propertyService.GetProperties();
+        }
+
+        [HttpPost, Route("SaveProperty")]
+        public void SaveProperty([FromForm(Name = "file.png")] List<IFormFile> file)
+        {
+            //var formFile = Request.Form.Files[0];
+            List<byte[]> byteArray = new List<byte[]>();
+
+            file.ForEach(f =>
+            {
+                using (var stream = new MemoryStream())
+                {
+                    byte[] byteFile = null;
+                    f.CopyTo(stream);
+                    byteFile = stream.ToArray();
+                    byteArray.Add(byteFile);
+                }
+            });
         }
     }
 }
