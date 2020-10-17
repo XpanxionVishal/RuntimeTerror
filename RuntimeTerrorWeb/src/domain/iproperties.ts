@@ -4,6 +4,8 @@ export interface IProperties {
     propertyId: number;
     propertyType: string;
     propertyTypeId: number;
+    // city: string;
+    // contact: number;
     area: string;
     areaId: number;
     postedBy: string;
@@ -12,6 +14,6 @@ export interface IProperties {
     ownerName: string;
     costPerDay: number;
     isOccupied: boolean;
-    occupiedBy: string;
+    occupiedBy: number;
     propertyPhotos: IPhotos[];
 }

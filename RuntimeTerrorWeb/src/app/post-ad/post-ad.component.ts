@@ -160,7 +160,7 @@ export class PostAdComponent implements OnInit {
     }
   }
 
-  onTemplateUpload() {
+  onTemplateUpload(): void {
     const files = this.fileInput.files;
     this.fileModel.fileContent = files;
     const formData = new FormData();
@@ -178,22 +178,34 @@ export class PostAdComponent implements OnInit {
   }
 
   onPostAdClick(): void {
-    const property: IProperties = {
+    const files = this.fileInput.files;
+    this.fileModel.fileContent = files;
+    const formData = new FormData();
+
+    for (const file of files) {
+      formData.append('file.png', file);
+    }
+
+    const headers = new HttpHeaders().append('Content-Disposition', 'multipart/form-data');
+
+    const property: any = {
       propertyId: 0,
-      propertyType: this.postAdFrom.value.propertyType,
-      propertyTypeId: this.postAdFrom.value.propertyTypeId,
-      area: this.postAdFrom.value.area,
-      areaId: this.postAdFrom.value.areaId,
-      postedBy: this.postAdFrom.value.postedBy,
-      postedByUserId: 0,
-      address: this.postAdFrom.value.address,
-      ownerName: this.postAdFrom.value.ownerName,
-      costPerDay: this.postAdFrom.value.costPerDay,
+      propertyType: this.postAdForm.value.propertyType.name,
+      propertyTypeId: this.postAdForm.value.propertyType.id,
+      area: this.postAdForm.value.area.name,
+      areaId: this.postAdForm.value.area.id,
+      postedBy: this.postAdForm.value.postedBy,
+      postedByUserId: 1,                            // LoggedIn USer
+      address: this.postAdForm.value.address,
+      ownerName: this.postAdForm.value.ownerName,
+      costPerDay: +this.postAdForm.value.costPerDay,
       isOccupied: true,
-      occupiedBy: 'x',
+      occupiedBy: 1,
       propertyPhotos: null
     };
-    this.appService.postAd(property).subscribe(res => {
+    formData.append('property', property);
+    this.appService.postAd(formData).subscribe(res => {
+      console.log(this.postAdForm.value);
       console.log(res);
     });
   }
