@@ -28,7 +28,7 @@ namespace api.Controllers
         }
 
         [HttpPost, Route("SaveProperty")]
-        public void SaveProperty([FromForm(Name = "file.png")] List<IFormFile> filesList, [FromBody] PropertyDTO property)
+        public void SaveProperty([FromForm(Name = "file.png")] List<IFormFile> filesList, [FromForm(Name = "property")] PropertyDTO property)
         {
             this.propertyService.SaveProperty(filesList, property);
         }
