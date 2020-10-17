@@ -1,3 +1,5 @@
+import { IPhotos } from './iphotos';
+
 export interface IProperties {
     propertyId: number;
     propertyType: string;
@@ -8,5 +10,5 @@ export interface IProperties {
     costPerDay: string;
     isOccupied: string;
     occupiedBy: string;
-    propertyPhotos: string;
+    propertyPhotos: IPhotos[];
 }

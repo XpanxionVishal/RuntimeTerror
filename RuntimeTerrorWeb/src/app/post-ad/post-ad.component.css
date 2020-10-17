@@ -3,9 +3,11 @@
 } */
 .p-inputtext {
     margin: 0;
-    height: 2rem;
-    border-radius: 5px;
+    height: 3.8vh;
+    border-radius: 3px;
     width: 80%;
+    border-color: white;
+    border: none;
 }
 .p-button {
     border-radius: 15px;

@@ -3,61 +3,49 @@
         <!-- <div class="p-col-12 p-md-1 p-lg-2"></div> -->
         <div class="p-col-12 p-md-12 p-lg-12"><label>City</label></div>
         <div class="p-col-12 p-md-12 p-lg-12">
-            <p-multiSelect [options]="cities1"></p-multiSelect>
+            <p-multiSelect [options]="cities"></p-multiSelect>
         </div>
         <div class="p-col-12 p-md-12 p-lg-12"><label>Area</label></div>
         <div class="p-col-12 p-md-12 p-lg-12">
-            <p-multiSelect [options]="cities1"></p-multiSelect>
+            <p-multiSelect [options]="area"></p-multiSelect>
         </div>
         <div class="p-col-12 p-md-12 p-lg-12"><label>Type of Property</label></div>
         <div class="p-col-12 p-md-12 p-lg-12">
-            <p-multiSelect [options]="cities1"></p-multiSelect>
+            <p-multiSelect [options]="propertyType"></p-multiSelect>
         </div>
         <div class="p-col-12 p-md-12 p-lg-12"><label>Price Range</label></div>
         <div class="p-col-12 p-md-12 p-lg-12">
-            <p-multiSelect [options]="cities1"></p-multiSelect>
+            <p-multiSelect [options]="cities"></p-multiSelect>
         </div>
         <div class="p-col-12 p-md-12 p-lg-12" style=" text-align: center;">
             <button pButton type="button" label="Search" class="p-button-warning"></button>
         </div>
-        <!--<div class="p-col-12 p-md-2 p-lg-1"><label>Area</label></div>
-        <div class="p-col-12 p-md-2 p-lg-3">
-            <p-multiSelect [options]="cities1"></p-multiSelect>
-        </div>
-        <div class="p-col-12 p-md-4 p-lg-2"></div>
-        <div class="p-col-12 p-md-1 p-lg-2"></div>
-        <div class="p-col-12 p-md-2 p-lg-1"><label>Type of Property</label></div>
-        <div class="p-col-12 p-md-3 p-lg-3">
-            <p-multiSelect [options]="cities1"></p-multiSelect>
-        </div>
-        <div class="p-col-12 p-md-2 p-lg-1"><label>Price Range</label></div>
-        <div class="p-col-12 p-md-4 p-lg-3">
-            <p-multiSelect [options]="cities1"></p-multiSelect>
-        </div>
-        <div class="p-col-12 p-md-4 p-lg-2"></div>
-        <div class="p-col-12 p-md-1 p-lg-2"></div> -->
-        <!-- <div class="p-col-12 p-md-2 p-lg-1"><label>Availability</label></div>
-        <div class="p-col-12 p-md-4 p-lg-3">
-            <p-multiSelect [options]="cities1"></p-multiSelect>
-        </div> -->
     </div>
-    <div class="p-grid p-lg-10">
-        <p-table [value]="[0]">
+    <div class="p-grid p-lg-10" style="text-align: center;">
+        <p-table [value]="properties">
             <ng-template pTemplate="header">
                 <tr>
-                    <th>Images</th>
+                    <th colspan="2">Images</th>
                     <th>Property Name & Address</th>
                     <th>Owner Details</th>
                     <th>Cost Per Day</th>
                     <th>Book Now</th>
                 </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-car>
+            <ng-template pTemplate="body" let-rowData>
                 <tr>
-                    <td>{{car.vin}}</td>
-                    <td>{{car.year}}</td>
-                    <td>{{car.brand}}</td>
-                    <td>{{car.color}}</td>
+                    <td colspan="2">
+                        <div class="p-grid" *ngFor="let photo of rowData.propertyPhotos">
+                            <img src="{{'data:image/jpg;base64,' + photo.photo}}" width="75" height="50" />
+                            <img src="{{'data:image/jpg;base64,' + photo.photo}}" width="75" height="50" />
+                            <img src="{{'data:image/jpg;base64,' + photo.photo}}" width="75" height="50" />
+                        </div>
+                    </td>
+                    <td>{{rowData.address}}</td>
+                    <td>{{rowData.address}}</td>
+                    <td>{{rowData.ownerName}}</td>
+                    <td>{{rowData.costPerDay}}</td>
+                    <td></td>
                 </tr>
             </ng-template>
         </p-table>

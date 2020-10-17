@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
+import { ICities } from 'src/domain/icities';
+import { SelectItem } from 'primeng/api';
+import { ComboItems } from 'src/domain/comboItems';
+import { ComboItemValue } from 'src/domain/comboitemvalue';
+import { HttpHeaders } from '@angular/common/http';
+import { IArea } from 'src/domain/iarea';
+import { IPropertyType } from 'src/domain/iproperty-type';
+import { IProperties } from 'src/domain/iproperties';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-find-accomodation',
@@ -7,8 +16,15 @@ import { AppService } from '../app.service';
   styleUrls: ['./find-accomodation.component.css']
 })
 export class FindAccomodationComponent implements OnInit {
-  cities1: any
-  constructor(private appService: AppService) {
+  cities: SelectItem[];
+  area: SelectItem[];
+  propertyType: SelectItem[];
+  properties: IProperties[];
+  images: any[];
+  imagePath: any;
+  constructor(
+    private appService: AppService
+  ) {
     // this.cities1 = [
     //   { label: 'New York', value: { id: 1, name: 'New York', code: 'NY' } },
     //   { label: 'Rome', value: { id: 2, name: 'Rome', code: 'RM' } },
@@ -19,31 +35,101 @@ export class FindAccomodationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.appService.getCities().subscribe(city => {
-      this.cities1 = city;
+    this.getCityDorpdown();
+    this.getAreaDorpdown();
+    this.getPropertyTypeDorpdown();
+    this.getProperties();
+  }
+
+  getProperties(): void {
+    this.appService.getProperties().subscribe(properties => {
+      this.properties = properties;
     });
   }
 
-  // getServicePortfolioComboItems(data: IServicePortfolio[]): Array<SelectItem> {
-  //   const items: Array<SelectItem> = this.addFirstItem();
+  getCityDorpdown(): void {
+    this.appService.getCities().subscribe(city => {
+      this.cities = this.getCitiesComboItems(city);
+    });
+  }
 
-  //   if (data) {
-  //     data.forEach(element => {
-  //       const item = new ComboItems();
-  //       const subItems = new ComboItemValue();
+  getAreaDorpdown(): void {
+    this.appService.getArea(1).subscribe(area => {
+      this.area = this.getAreaComboItems(area);
+    });
+  }
 
-  //       // item
-  //       item.label = element.portfolioName;
+  getPropertyTypeDorpdown(): void {
+    this.appService.getPropertyType().subscribe(proType => {
+      this.propertyType = this.getPropertyTypeComboItems(proType);
+    });
+  }
+  getCitiesComboItems(data: ICities[]): Array<SelectItem> {
+    // const items: Array<SelectItem> = this.addFirstItem();
+    const items = [];
 
-  //       // item value
-  //       subItems.id = element.servicePortfolioId;
-  //       subItems.code = element.portfolioName;
-  //       subItems.name = element.portfolioName;
+    if (data) {
+      data.forEach(element => {
+        const item = new ComboItems();
+        const subItems = new ComboItemValue();
 
-  //       item.value = subItems;
-  //       items.push(item);
-  //     });
-  //     return items;
-  //   }
-  // }
+        // item
+        item.label = element.cityName;
+
+        // item value
+        subItems.id = element.cityId;
+        subItems.name = element.cityName;
+
+        item.value = subItems;
+        items.push(item);
+      });
+      return items;
+    }
+  }
+
+  getAreaComboItems(data: IArea[]): Array<SelectItem> {
+    // const items: Array<SelectItem> = this.addFirstItem();
+    const items = [];
+
+    if (data) {
+      data.forEach(element => {
+        const item = new ComboItems();
+        const subItems = new ComboItemValue();
+
+        // item
+        item.label = element.areaName;
+
+        // item value
+        subItems.id = element.cityId;
+        subItems.name = element.areaName;
+
+        item.value = subItems;
+        items.push(item);
+      });
+      return items;
+    }
+  }
+
+  getPropertyTypeComboItems(data: IPropertyType[]): Array<SelectItem> {
+    // const items: Array<SelectItem> = this.addFirstItem();
+    const items = [];
+
+    if (data) {
+      data.forEach(element => {
+        const item = new ComboItems();
+        const subItems = new ComboItemValue();
+
+        // item
+        item.label = element.typeName;
+
+        // item value
+        subItems.id = element.typeId;
+        subItems.name = element.typeName;
+
+        item.value = subItems;
+        items.push(item);
+      });
+      return items;
+    }
+  }
 }
