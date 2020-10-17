@@ -109,3 +109,4 @@ D:\RuntimeTerror\api\api\obj\Debug\netcoreapp3.0\api.RazorTargetAssemblyInfo.cac
 D:\RuntimeTerror\api\api\obj\Debug\netcoreapp3.0\api.csproj.CopyComplete
 D:\RuntimeTerror\api\api\obj\Debug\netcoreapp3.0\api.dll
 D:\RuntimeTerror\api\api\obj\Debug\netcoreapp3.0\api.pdb
+D:\Xperiments 4.0\Project\RuntimeTerror\api\api\obj\Debug\netcoreapp3.0\api.csprojAssemblyReference.cache
