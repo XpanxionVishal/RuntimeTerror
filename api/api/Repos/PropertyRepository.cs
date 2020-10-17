@@ -1,8 +1,12 @@
 ﻿using api.DTOs;
 using api.Entities;
+using api.Helpers;
 using api.Interfaces;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -45,6 +49,17 @@ namespace api.Repos
                                               }).ToList()
                         }).ToList();
             return property;
+        }
+
+        public void SaveProperty(IList<PropertyPhotoDTO> photoList)
+        {
+            apiContext.Database.ExecuteSqlRaw(" exec dbo.sp_SaveProperty {0}",
+            new SqlParameter("@InputPhotos", SqlDbType.Structured)
+            {
+                Value = IListToDataTableHelper.ToDataTables(photoList),
+                TypeName = "dbo.PropertyPhotos"
+            }
+            );
         }
     }
 }

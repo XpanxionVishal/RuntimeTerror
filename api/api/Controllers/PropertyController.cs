@@ -30,19 +30,24 @@ namespace api.Controllers
         [HttpPost, Route("SaveProperty")]
         public void SaveProperty([FromForm(Name = "file.png")] List<IFormFile> file)
         {
-            //var formFile = Request.Form.Files[0];
-            List<byte[]> byteArray = new List<byte[]>();
+            List<PropertyPhotoDTO> propertyPhotos = new List<PropertyPhotoDTO>();
 
             file.ForEach(f =>
             {
                 using (var stream = new MemoryStream())
                 {
+                    PropertyPhotoDTO photo = new PropertyPhotoDTO();
                     byte[] byteFile = null;
                     f.CopyTo(stream);
                     byteFile = stream.ToArray();
-                    byteArray.Add(byteFile);
+                    photo.Photo = byteFile;
+                    photo.PropertyId = 1;
+                    photo.PropertyPhotoId = 1;
+                    propertyPhotos.Add(photo);
                 }
             });
+
+            this.propertyService.SaveProperty(propertyPhotos);
         }
     }
 }

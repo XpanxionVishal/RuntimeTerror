@@ -20,5 +20,10 @@ namespace api.Services
         {
             return this.propertyRepository.GetProperties();
         }
+
+        public void SaveProperty(IList<PropertyPhotoDTO> photoList)
+        {
+            this.propertyRepository.SaveProperty(photoList);
+        }
     }
 }
