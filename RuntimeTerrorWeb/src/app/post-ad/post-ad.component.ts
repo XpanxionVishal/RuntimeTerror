@@ -27,7 +27,7 @@ export class PostAdComponent implements OnInit {
   }
 
   @ViewChild('fileInput') fileInput;
-  postAdFrom: FormGroup;
+  postAdForm: FormGroup;
   items: MenuItem[];
   uploadedFiles: any[] = [];
   cities: SelectItem[];
@@ -47,7 +47,7 @@ export class PostAdComponent implements OnInit {
   }
 
   initializeForm(): void {
-    this.postAdFrom = this.fb.group({
+    this.postAdForm = this.fb.group({
       ownerName: [],
       contact: [],
       city: [],
