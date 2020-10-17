@@ -1,8 +1,12 @@
 ﻿using api.DTOs;
 using api.Entities;
+using api.Helpers;
 using api.Interfaces;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -35,6 +39,9 @@ namespace api.Repos
                             PostedBy = u1.Name,
                             IsOccupied = p.IsOccupied,
                             OwnerName = p.OwnerName,
+                            AreaId = p.AreaId ?? 0,
+                            PropertyTypeId = p.PropertyTypeId ?? 0,
+                            PostedByUserId = p.PostedBy ?? 0,
                             PropertyPhotos = (from photo in this.apiContext.PropertyPhotos
                                               where photo.PropertyId == p.PropertyId
                                               select new PropertyPhotoDTO
@@ -45,6 +52,23 @@ namespace api.Repos
                                               }).ToList()
                         }).ToList();
             return property;
+        }
+
+        public void SaveProperty(IList<PropertyPhotoDTO> photoList, PropertyDTO property)
+        {
+            apiContext.Database.ExecuteSqlRaw(" exec dbo.sp_SaveProperty {0}, {1}, {2}, {3}, {4}, {5}, {6}",
+            new SqlParameter("@InputPhotos", SqlDbType.Structured)
+            {
+                Value = IListToDataTableHelper.ToDataTables(photoList),
+                TypeName = "dbo.PropertyPhotos"
+            },
+            property.PropertyTypeId,
+            property.AreaId,
+            property.PostedByUserId,
+            property.Address,
+            property.OwnerName,
+            property.CostPerDay
+            );
         }
     }
 }
