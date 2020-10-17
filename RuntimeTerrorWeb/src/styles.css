@@ -9,13 +9,24 @@
     background-color: #ffffff;
     position: relative;
     user-select: none;
-    width: 100%;
+    width: 80%;
+    height: 3.8vh;
+    border-radius: 3px;
 }
 .p-multiselect-item {
-    cursor: pointer;
-    font-weight: 400;
     background-color: #ffffff;
-    overflow: hidden;
-    position: relative;
-    white-space: nowrap;
+    padding: 0 0 0 5px;
+}
+
+.p-dropdown {
+    background-color: #ffffff;
+    width: 80%;
+    height: 3.8vh;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.p-dropdown-item {
+    background-color: #ffffff;
+    padding: 0 0 0 5px;
 }
