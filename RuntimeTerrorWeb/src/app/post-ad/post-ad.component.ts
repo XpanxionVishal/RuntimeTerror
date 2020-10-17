@@ -1,7 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { MenuItem, SelectItem } from 'primeng/api';
 import { IUserListResult } from '../domain/IUserListResult';
+import { ComboItemValue } from 'src/domain/comboitemvalue';
+import { ComboItems } from 'src/domain/comboItems';
+import { IPropertyType } from 'src/domain/iproperty-type';
+import { IArea } from 'src/domain/iarea';
+import { ICities } from 'src/domain/icities';
+import { AppService } from '../app.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-post-ad',
@@ -11,38 +18,150 @@ import { IUserListResult } from '../domain/IUserListResult';
 export class PostAdComponent implements OnInit {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private appService: AppService,
+    private fb: FormBuilder
   ) {
 
   }
 
   @ViewChild('fileInput') fileInput;
-  cities: any;
+  postAdFrom: FormGroup;
   items: MenuItem[];
   uploadedFiles: any[] = [];
+  cities: SelectItem[];
+  area: SelectItem[];
+  propertyType: SelectItem[];
   fileModel: any = {
     fileContent: ''
   };
   public progress: number;
   public message: string;
 
-  ngOnInit() {
-    this.cities = [
-      { label: 'Select City', value: null },
-      { label: 'New York', value: { id: 1, name: 'New York', code: 'NY' } },
-      { label: 'Rome', value: { id: 2, name: 'Rome', code: 'RM' } },
-      { label: 'London', value: { id: 3, name: 'London', code: 'LDN' } },
-      { label: 'Istanbul', value: { id: 4, name: 'Istanbul', code: 'IST' } },
-      { label: 'Paris', value: { id: 5, name: 'Paris', code: 'PRS' } }
-    ];
+  ngOnInit(): void {
+    this.getCityDorpdown();
+    this.getAreaDorpdown();
+    this.getPropertyTypeDorpdown();
+    this.initializeForm();
+  }
 
-    this.items = [
-      { label: 'Home', icon: 'pi pi-fw pi-home' },
-      { label: 'Calendar', icon: 'pi pi-fw pi-calendar' },
-      { label: 'Edit', icon: 'pi pi-fw pi-pencil' },
-      { label: 'Documentation', icon: 'pi pi-fw pi-file' },
-      { label: 'Settings', icon: 'pi pi-fw pi-cog' }
-    ];
+  initializeForm(): void {
+    this.postAdFrom = this.fb.group({
+      ownerName: [],
+      contact: [],
+      city: [],
+      area: [],
+      propertyType: [],
+      costPerDay: [],
+      propertyAddress: [],
+      picture: []
+    });
+  }
+
+
+
+
+
+
+
+  getCityDorpdown(): void {
+    this.appService.getCities().subscribe(city => {
+      this.cities = this.getCitiesComboItems(city);
+    });
+  }
+
+  getAreaDorpdown(): void {
+    this.appService.getArea(1).subscribe(area => {
+      this.area = this.getAreaComboItems(area);
+    });
+  }
+
+  getPropertyTypeDorpdown(): void {
+    this.appService.getPropertyType().subscribe(proType => {
+      this.propertyType = this.getPropertyTypeComboItems(proType);
+    });
+  }
+
+  private addFirstItem(): Array<SelectItem> {
+    const items: Array<SelectItem> = [];
+    const subItem = {
+      'id': -1,
+      'code': '',
+      'name': null
+    };
+
+    const item: SelectItem = { label: '--- select ---', value: subItem };
+    items.push(item);
+    return items;
+  }
+
+  getCitiesComboItems(data: ICities[]): Array<SelectItem> {
+    const items: Array<SelectItem> = this.addFirstItem();
+    // const items = [];
+
+    if (data) {
+      data.forEach(element => {
+        const item = new ComboItems();
+        const subItems = new ComboItemValue();
+
+        // item
+        item.label = element.cityName;
+
+        // item value
+        subItems.id = element.cityId;
+        subItems.name = element.cityName;
+
+        item.value = subItems;
+        items.push(item);
+      });
+      return items;
+    }
+  }
+
+  getAreaComboItems(data: IArea[]): Array<SelectItem> {
+    const items: Array<SelectItem> = this.addFirstItem();
+    // const items = [];
+
+    if (data) {
+      data.forEach(element => {
+        const item = new ComboItems();
+        const subItems = new ComboItemValue();
+
+        // item
+        item.label = element.areaName;
+
+        // item value
+        subItems.id = element.cityId;
+        subItems.name = element.areaName;
+
+        item.value = subItems;
+        items.push(item);
+      });
+      return items;
+    }
+  }
+
+  getPropertyTypeComboItems(data: IPropertyType[]): Array<SelectItem> {
+    const items: Array<SelectItem> = this.addFirstItem();
+    // const items = [];
+
+    if (data) {
+      data.forEach(element => {
+        const item = new ComboItems();
+        const subItems = new ComboItemValue();
+
+        // item
+        item.label = element.typeName;
+
+        // item value
+        subItems.id = element.typeId;
+        subItems.name = element.typeName;
+
+        item.value = subItems;
+        items.push(item);
+      });
+      return items;
+    }
   }
 
   onTemplateUpload() {

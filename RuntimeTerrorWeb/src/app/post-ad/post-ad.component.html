@@ -1,32 +1,52 @@
-<div class="p-grid">
-    <div class="p-col-12 p-md-1 p-lg-2"></div>
-    <div class="p-col-12 p-md-2 p-lg-1"><label>Owner Name</label></div>
-    <div class="p-col-12 p-md-3 p-lg-3"><input type="text" pInputText /></div>
-    <div class="p-col-12 p-md-2 p-lg-1"><label>Contact Number</label></div>
-    <div class="p-col-12 p-md-2 p-lg-3"><input type="text" pInputText /></div>
-    <div class="p-col-12 p-md-4 p-lg-2"></div>
-    <div class="p-col-12 p-md-1 p-lg-2"></div>
-    <div class="p-col-12 p-md-2 p-lg-1"><label>Property Address</label></div>
-    <div class="p-col-12 p-md-3 p-lg-3"><textarea pInputTextarea></textarea></div>
-    <div class="p-col-12 p-md-2 p-lg-1"><label>Cost Per Day</label></div>
-    <div class="p-col-12 p-md-4 p-lg-3"><input type="text" pInputText /></div>
-    <div class="p-col-12 p-md-4 p-lg-2"></div>
-    <div class="p-col-12 p-md-1 p-lg-2"></div>
-    <div class="p-col-12 p-md-2 p-lg-1"><label>Upload Pictures</label></div>
-    <div class="p-col-12 p-md-9 p-lg-9">
-        <!-- <input type="file" multiple class="upload" /> -->
-        <p-fileUpload #fileInput name="templateFile[]" accept=".png" chooseLabel="Browse/Drag" customUpload="true" multiple="multiple"
-            (uploadHandler)="onTemplateUpload()">
-            <ng-template pTemplate="content">
-                <ul *ngIf="uploadedFiles.length">
-                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
-                </ul>
-            </ng-template>
-        </p-fileUpload>
-        <!-- <p-fileUpload name="myfile[]"  multiple="multiple"></p-fileUpload> -->
-    </div>
-    <div class="p-col-12 p-md-12 p-lg-12 button" style="    text-align: center;">
-        <button pButton type="button" label="Post Ad" class="p-button-warning"></button>
-    </div>
+<form [formGroup]="postAdForm">
+    <div class="p-grid">
+        <div class="p-col-12 p-md-1 p-lg-2"></div>
+        <div class="p-col-12 p-md-2 p-lg-1"><label>Owner Name</label></div>
+        <div class="p-col-12 p-md-3 p-lg-3"><input type="text" pInputText /></div>
+        <div class="p-col-12 p-md-2 p-lg-1"><label>Contact Number</label></div>
+        <div class="p-col-12 p-md-2 p-lg-3"><input type="text" pInputText /></div>
+        <div class="p-col-12 p-md-4 p-lg-2"></div>
 
-</div>
+        <div class="p-col-12 p-md-1 p-lg-2"></div>
+        <div class="p-col-12 p-md-2 p-lg-1"><label>City</label></div>
+        <div class="p-col-12 p-md-3 p-lg-3">
+            <p-dropdown [options]="cities"></p-dropdown>
+        </div>
+        <div class="p-col-12 p-md-2 p-lg-1"><label>Area</label></div>
+        <div class="p-col-12 p-md-2 p-lg-3">
+            <p-dropdown [options]="area"></p-dropdown>
+        </div>
+        <div class="p-col-12 p-md-4 p-lg-2"></div>
+
+        <div class="p-col-12 p-md-1 p-lg-2"></div>
+        <div class="p-col-12 p-md-2 p-lg-1"><label>Type of Property</label></div>
+        <div class="p-col-12 p-md-2 p-lg-3">
+            <p-dropdown [options]="propertyType"></p-dropdown>
+        </div>
+        <div class="p-col-12 p-md-2 p-lg-1"><label>Cost Per Day</label></div>
+        <div class="p-col-12 p-md-4 p-lg-3"><input type="text" pInputText /></div>
+        <div class="p-col-12 p-md-4 p-lg-2"></div>
+
+
+        <div class="p-col-12 p-md-1 p-lg-2"></div>
+        <div class="p-col-12 p-md-2 p-lg-1"><label>Property Address</label></div>
+        <div class="p-col-12 p-md-3 p-lg-3"><textarea pInputTextarea></textarea></div>
+        <div class="p-col-12 p-md-2 p-lg-1"><label>Upload Pictures</label></div>
+        <div class="p-col-12 p-md-9 p-lg-3">
+            <p-fileUpload #fileInput name="templateFile[]" accept=".png" chooseLabel="Browse/Drag" customUpload="true"
+                multiple="multiple" (uploadHandler)="onTemplateUpload()">
+                <ng-template pTemplate="content">
+                    <ul *ngIf="uploadedFiles.length">
+                        <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                    </ul>
+                </ng-template>
+            </p-fileUpload>
+        </div>
+        <div class="p-col-12 p-md-1 p-lg-2"></div>
+
+        <div class="p-col-12 p-md-12 p-lg-12 button" style="text-align: center;">
+            <button pButton type="button" label="Post Ad" class="p-button-warning"></button>
+        </div>
+
+    </div>
+</form>
