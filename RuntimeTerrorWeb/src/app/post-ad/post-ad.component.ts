@@ -9,6 +9,7 @@ import { IArea } from 'src/domain/iarea';
 import { ICities } from 'src/domain/icities';
 import { AppService } from '../app.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { IProperties } from 'src/domain/iproperties';
 
 @Component({
   selector: 'app-post-ad',
@@ -53,17 +54,12 @@ export class PostAdComponent implements OnInit {
       area: [],
       propertyType: [],
       costPerDay: [],
-      propertyAddress: [],
+      postedBy: [],
+      isOccupied: [],
+      address: [],
       picture: []
     });
   }
-
-
-
-
-
-
-
   getCityDorpdown(): void {
     this.appService.getCities().subscribe(city => {
       this.cities = this.getCitiesComboItems(city);
@@ -179,5 +175,26 @@ export class PostAdComponent implements OnInit {
       formData, { headers }).subscribe(event => {
         console.log(event);
       });
+  }
+
+  onPostAdClick(): void {
+    const property: IProperties = {
+      propertyId: 0,
+      propertyType: this.postAdFrom.value.propertyType,
+      propertyTypeId: this.postAdFrom.value.propertyTypeId,
+      area: this.postAdFrom.value.area,
+      areaId: this.postAdFrom.value.areaId,
+      postedBy: this.postAdFrom.value.postedBy,
+      postedByUserId: 0,
+      address: this.postAdFrom.value.address,
+      ownerName: this.postAdFrom.value.ownerName,
+      costPerDay: this.postAdFrom.value.costPerDay,
+      isOccupied: true,
+      occupiedBy: 'x',
+      propertyPhotos: null
+    };
+    this.appService.postAd(property).subscribe(res => {
+      console.log(res);
+    });
   }
 }

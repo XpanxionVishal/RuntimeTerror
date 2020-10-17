@@ -30,4 +30,8 @@ export class AppService {
   getProperties(): Observable<IProperties[]> {
     return this.httpClient.get<IProperties[]>(environment.apiUrl + 'Property/GetProperties/');
   }
+
+  postAd(property: IProperties): Observable<IProperties> {
+    return this.httpClient.post<IProperties>(environment.apiUrl + 'Property/SaveProperty', property);
+  }
 }
