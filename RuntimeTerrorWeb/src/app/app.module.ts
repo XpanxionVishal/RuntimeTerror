@@ -19,6 +19,8 @@ import { GalleriaModule } from 'primeng/galleria';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import {EncrDecrService} from '../services/encr-decr.service';
+import {OverlayPanelModule} from 'primeng/overlaypanel';
+import {SliderModule} from 'primeng/slider';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import {RadioButtonModule} from 'primeng/radiobutton';
 
@@ -48,6 +50,8 @@ import {RadioButtonModule} from 'primeng/radiobutton';
     HttpClientModule,
     GalleriaModule,
     FormsModule,
+    OverlayPanelModule,
+    SliderModule,
     RadioButtonModule,
   ],
   providers: [EncrDecrService],

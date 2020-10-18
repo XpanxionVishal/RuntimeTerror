@@ -1,48 +1,54 @@
 <div class="p-grid p-lg-12">
-    <div class=" p-grid p-lg-2" style="text-align: center;">
-        <!-- <div class="p-col-12 p-md-1 p-lg-2"></div> -->
-        <div class="p-col-12 p-md-12 p-lg-12"><label>City</label></div>
-        <div class="p-col-12 p-md-12 p-lg-12">
-            <p-multiSelect [options]="cities"></p-multiSelect>
+    <div class=" p-grid p-md-12 p-lg-12" style="text-align: center;">
+        <div class="p-col-12 p-md-1 p-lg-1"><label>City</label></div>
+        <div class="p-col-12 p-md-2 p-lg-2">
+            <p-dropdown [options]="cities" (onChange)="onCityChange($event.value.id)"></p-dropdown>
         </div>
-        <div class="p-col-12 p-md-12 p-lg-12"><label>Area</label></div>
-        <div class="p-col-12 p-md-12 p-lg-12">
-            <p-multiSelect [options]="area"></p-multiSelect>
+        <div class="p-col-12 p-md-1 p-lg-1"><label>Area</label></div>
+        <div class="p-col-12 p-md-2 p-lg-2">
+            <p-dropdown [options]="area" placeholder="--- select ---" (onChange)="onAreaChange($event.value.id)">
+            </p-dropdown>
         </div>
-        <div class="p-col-12 p-md-12 p-lg-12"><label>Type of Property</label></div>
-        <div class="p-col-12 p-md-12 p-lg-12">
-            <p-multiSelect [options]="propertyType"></p-multiSelect>
+        <div class="p-col-12 p-md-2 p-lg-2"><label>Type of Property</label></div>
+        <div class="p-col-12 p-md-2 p-lg-2">
+            <p-dropdown [options]="propertyType" (onChange)="onProTypeChange($event.value.id)"></p-dropdown>
         </div>
-        <div class="p-col-12 p-md-12 p-lg-12"><label>Price Range</label></div>
-        <div class="p-col-12 p-md-12 p-lg-12">
-            <p-multiSelect [options]="cities"></p-multiSelect>
-        </div>
-        <div class="p-col-12 p-md-12 p-lg-12" style=" text-align: center;">
-            <button pButton type="button" label="Search" class="p-button-warning"></button>
+        <div class="p-col-12 p-md-2 p-lg-2" style=" text-align: center;">
+            <button pButton type="button" label="Search" (click)="onSearchClick()" class="p-button-warning"></button>
         </div>
     </div>
-    <div class="p-grid p-lg-10" style="text-align: center;">
-        <p-table [value]="properties">
+</div>
+<div class="p-grid p-md-12 p-lg-12" *ngIf="isSearched">
+    <div class="p-grid p-md-12 p-lg-12" style="text-align: center;">
+        <p-table [value]="properties" [scrollable]="true" scrollHeight="55vh">
             <ng-template pTemplate="header">
                 <tr>
-                    <th colspan="2">Images</th>
+                    <th> Sr No. </th>
+                    <th colspan="6" style="display: flex; justify-content: center;">Images</th>
                     <th>Property Name & Address</th>
                     <th>Owner Details</th>
                     <th>Cost Per Day</th>
                     <th>Book Now</th>
                 </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-rowData>
+            <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
                 <tr>
-                    <td colspan="2">
-                        <div class="p-grid" *ngFor="let photo of rowData.propertyPhotos">
-                            <img src="{{'data:image/jpg;base64,' + photo.photo}}" width="75" height="50" />
-                            <img src="{{'data:image/jpg;base64,' + photo.photo}}" width="75" height="50" />
-                            <img src="{{'data:image/jpg;base64,' + photo.photo}}" width="75" height="50" />
+                    <td> {{rowIndex + 1}} </td>
+                    <td colspan="6" style="display: flex; justify-content: center;">
+                        <div class="p-grid" *ngFor="let photo of rowData.propertyPhotos" style="padding: 0 1.5em 0 0;">
+                            <img class="image" src="{{'data:image/jpg;base64,' + photo.photo}}"
+                                (click)="op.toggle($event)" width="50" height="50" />
                         </div>
                     </td>
-                    <td>{{rowData.address}}</td>
-                    <td>{{rowData.address}}</td>
+                    <p-overlayPanel appendTo="body" #op>
+                        <div class="p-grid" *ngFor="let photo of rowData.propertyPhotos" style="padding: 1em;">
+                            <img class="image" clas src="{{'data:image/jpg;base64,' + photo.photo}}" width="350"
+                                height="300" />
+                        </div>
+                    </p-overlayPanel>
+                    <td>
+                        {{rowData.address  + ' , ' + rowData.area + ' , ' + rowData.city}}
+                    </td>
                     <td>{{rowData.ownerName}}</td>
                     <td>{{rowData.costPerDay}}</td>
                     <td></td>
@@ -51,3 +57,4 @@
         </p-table>
     </div>
 </div>
+<!-- </div> -->
