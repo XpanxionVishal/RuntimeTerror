@@ -4,11 +4,9 @@ import { ICities } from 'src/domain/icities';
 import { SelectItem } from 'primeng/api';
 import { ComboItems } from 'src/domain/comboItems';
 import { ComboItemValue } from 'src/domain/comboitemvalue';
-import { HttpHeaders } from '@angular/common/http';
 import { IArea } from 'src/domain/iarea';
 import { IPropertyType } from 'src/domain/iproperty-type';
 import { IProperties } from 'src/domain/iproperties';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-find-accomodation',
@@ -24,50 +22,33 @@ export class FindAccomodationComponent implements OnInit {
   imagePath: any;
   val: number;
   isSearched = false;
-  selectedCity: SelectItem;
-  selectedProType: SelectItem;
-  selectedArea: SelectItem;
-  constructor(
-    private appService: AppService
-  ) {
-    // this.cities1 = [
-    //   { label: 'New York', value: { id: 1, name: 'New York', code: 'NY' } },
-    //   { label: 'Rome', value: { id: 2, name: 'Rome', code: 'RM' } },
-    //   { label: 'London', value: { id: 3, name: 'London', code: 'LDN' } },
-    //   { label: 'Istanbul', value: { id: 4, name: 'Istanbul', code: 'IST' } },
-    //   { label: 'Paris', value: { id: 5, name: 'Paris', code: 'PRS' } }
-    // ];
-  }
+  selectedCityId: SelectItem;
+  selectedProTypeId: SelectItem;
+  selectedAreaId: SelectItem;
+  constructor(private appService: AppService) { }
 
   ngOnInit(): void {
     this.getCityDorpdown();
-    // this.getAreaDorpdown();
     this.getPropertyTypeDorpdown();
-    this.getProperties();
+    this.onCityChange(-1);
   }
 
   onSearchClick(): void {
-    this.getProperties();
     this.isSearched = true;
-  }
-  getProperties(): void {
-    this.appService.getProperties(this.selectedArea.id, this.selectedProType.id).subscribe(properties => {
+    this.appService.getProperties(this.selectedAreaId, this.selectedProTypeId).subscribe(properties => {
       this.properties = properties;
     });
   }
 
-  onCityChange(item): void {
-    console.log(item);
-    this.selectedCity = item;
-    this.getAreaDorpdown()
+  onCityChange(id): void {
+    this.selectedCityId = id;
+    this.getAreaDorpdown();
   }
-  onAreaChange(item): void {
-    console.log(item);
-    this.selectedArea = item;
+  onAreaChange(id): void {
+    this.selectedAreaId = id;
   }
-  onProTypeChange(item): void {
-    console.log(item);
-    this.selectedProType = item;
+  onProTypeChange(id): void {
+    this.selectedProTypeId = id;
   }
   getCityDorpdown(): void {
     this.appService.getCities().subscribe(city => {
@@ -76,7 +57,7 @@ export class FindAccomodationComponent implements OnInit {
   }
 
   getAreaDorpdown(): void {
-    this.appService.getArea(this.selectedCity.id).subscribe(area => {
+    this.appService.getArea(this.selectedCityId).subscribe(area => {
       this.area = this.getAreaComboItems(area);
     });
   }
@@ -86,10 +67,22 @@ export class FindAccomodationComponent implements OnInit {
       this.propertyType = this.getPropertyTypeComboItems(proType);
     });
   }
-  getCitiesComboItems(data: ICities[]): Array<SelectItem> {
-    // const items: Array<SelectItem> = this.addFirstItem();
-    const items = [];
 
+  private addFirstItem(): Array<SelectItem> {
+    const items: Array<SelectItem> = [];
+    const subItem = {
+      id: -1,
+      code: '',
+      name: null
+    };
+
+    const item: SelectItem = { label: '--- select ---', value: subItem };
+    items.push(item);
+    return items;
+  }
+
+  getCitiesComboItems(data: ICities[]): Array<SelectItem> {
+    const items: Array<SelectItem> = this.addFirstItem();
     if (data) {
       data.forEach(element => {
         const item = new ComboItems();
@@ -110,9 +103,7 @@ export class FindAccomodationComponent implements OnInit {
   }
 
   getAreaComboItems(data: IArea[]): Array<SelectItem> {
-    // const items: Array<SelectItem> = this.addFirstItem();
-    const items = [];
-
+    const items: Array<SelectItem> = this.addFirstItem();
     if (data) {
       data.forEach(element => {
         const item = new ComboItems();
@@ -133,9 +124,7 @@ export class FindAccomodationComponent implements OnInit {
   }
 
   getPropertyTypeComboItems(data: IPropertyType[]): Array<SelectItem> {
-    // const items: Array<SelectItem> = this.addFirstItem();
-    const items = [];
-
+    const items: Array<SelectItem> = this.addFirstItem();
     if (data) {
       data.forEach(element => {
         const item = new ComboItems();

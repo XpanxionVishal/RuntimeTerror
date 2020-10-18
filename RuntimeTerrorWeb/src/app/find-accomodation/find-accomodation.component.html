@@ -2,34 +2,29 @@
     <div class=" p-grid p-md-12 p-lg-12" style="text-align: center;">
         <div class="p-col-12 p-md-1 p-lg-1"><label>City</label></div>
         <div class="p-col-12 p-md-2 p-lg-2">
-            <p-dropdown [options]="cities" (onChange)="onCityChange($event.value)"></p-dropdown>
+            <p-dropdown [options]="cities" (onChange)="onCityChange($event.value.id)"></p-dropdown>
         </div>
         <div class="p-col-12 p-md-1 p-lg-1"><label>Area</label></div>
         <div class="p-col-12 p-md-2 p-lg-2">
-            <p-dropdown [options]="area" (onChange)="onAreaChange($event.value)"></p-dropdown>
+            <p-dropdown [options]="area" placeholder="--- select ---" (onChange)="onAreaChange($event.value.id)">
+            </p-dropdown>
         </div>
         <div class="p-col-12 p-md-2 p-lg-2"><label>Type of Property</label></div>
         <div class="p-col-12 p-md-2 p-lg-2">
-            <p-dropdown [options]="propertyType" (onChange)="onProTypeChange($event.value)"></p-dropdown>
+            <p-dropdown [options]="propertyType" (onChange)="onProTypeChange($event.value.id)"></p-dropdown>
         </div>
         <div class="p-col-12 p-md-2 p-lg-2" style=" text-align: center;">
             <button pButton type="button" label="Search" (click)="onSearchClick()" class="p-button-warning"></button>
         </div>
-        <!-- <div class="p-col-12 p-md-12 p-lg-12"><label>Price Range</label></div> -->
-        <!-- <div class="p-col-12 p-md-12 p-lg-12"> -->
-        <!-- <p-multiSelect [options]="cities"></p-multiSelect> -->
-        <!-- <p-slider [(ngModel)]="val" [style]="{'width':'14em'}"></p-slider> -->
-
-        <!-- </div> -->
     </div>
 </div>
 <div class="p-grid p-md-12 p-lg-12" *ngIf="isSearched">
     <div class="p-grid p-md-12 p-lg-12" style="text-align: center;">
-        <p-table [value]="properties">
+        <p-table [value]="properties" [scrollable]="true" scrollHeight="55vh">
             <ng-template pTemplate="header">
                 <tr>
                     <th> Sr No. </th>
-                    <th colspan="4" style="display: flex; justify-content: center;">Images</th>
+                    <th colspan="6" style="display: flex; justify-content: center;">Images</th>
                     <th>Property Name & Address</th>
                     <th>Owner Details</th>
                     <th>Cost Per Day</th>
@@ -39,22 +34,20 @@
             <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
                 <tr>
                     <td> {{rowIndex + 1}} </td>
-                    <td colspan="4" style="display: flex; justify-content: center;">
+                    <td colspan="6" style="display: flex; justify-content: center;">
                         <div class="p-grid" *ngFor="let photo of rowData.propertyPhotos" style="padding: 0 1.5em 0 0;">
                             <img class="image" src="{{'data:image/jpg;base64,' + photo.photo}}"
-                                (click)="op.toggle($event)" width="100" height="100" />
-                            <!-- add border radius -->
+                                (click)="op.toggle($event)" width="50" height="50" />
                         </div>
                     </td>
                     <p-overlayPanel appendTo="body" #op>
                         <div class="p-grid" *ngFor="let photo of rowData.propertyPhotos" style="padding: 1em;">
                             <img class="image" clas src="{{'data:image/jpg;base64,' + photo.photo}}" width="350"
                                 height="300" />
-                            <!-- add border radius -->
                         </div>
                     </p-overlayPanel>
                     <td>
-                        {{rowData.address}}
+                        {{rowData.address  + ' , ' + rowData.area + ' , ' + rowData.city}}
                     </td>
                     <td>{{rowData.ownerName}}</td>
                     <td>{{rowData.costPerDay}}</td>
