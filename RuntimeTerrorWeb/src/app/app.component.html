@@ -1,14 +1,14 @@
-<form style="height: 97vh;background-color: #ffa1a1 ;overflow: hidden;">
+<form style="height: 98vh;background-color: #ffa1a1 ;overflow: hidden;">
     <div class="p-sm-12 ">
         <div class="menu">
             <span (click)="accomodation()" style="margin: 0em 1em 0 3em" class="menus">Find
                 Accomodation</span>
             <span (click)="postAd()" class="menus">Post An Ad</span>
-            <span (click)="login()" class="menus">Login</span>
+            <span (click)="login()" class="login-menu">Sign In/Sign Up</span>
         </div>
     </div>
     <div class="p-grid">
-        <div *ngIf="isAccomodation">
+        <div *ngIf="isAccomodation" style="width: 100%;">
             <app-find-accomodation></app-find-accomodation>
         </div>
         <div *ngIf="isPostAd">

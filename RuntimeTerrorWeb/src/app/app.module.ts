@@ -19,7 +19,8 @@ import { GalleriaModule } from 'primeng/galleria';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import {EncrDecrService} from '../services/encr-decr.service';
-
+import {OverlayPanelModule} from 'primeng/overlaypanel';
+import {SliderModule} from 'primeng/slider';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,8 @@ import {EncrDecrService} from '../services/encr-decr.service';
     HttpClientModule,
     GalleriaModule,
     FormsModule,
+    OverlayPanelModule,
+    SliderModule,
   ],
   providers: [EncrDecrService],
   bootstrap: [AppComponent]

@@ -27,8 +27,8 @@ export class AppService {
     return this.httpClient.get<IPropertyType[]>(environment.apiUrl + 'Master/GetPropertyTypes/');
   }
 
-  getProperties(): Observable<IProperties[]> {
-    return this.httpClient.get<IProperties[]>(environment.apiUrl + 'Property/GetProperties/');
+  getProperties(areaId, propertyTypeId): Observable<IProperties[]> {
+    return this.httpClient.get<IProperties[]>(environment.apiUrl + 'Property/GetProperties/' + areaId + '/' + propertyTypeId);
   }
 
   postAd(property: any): Observable<any> {

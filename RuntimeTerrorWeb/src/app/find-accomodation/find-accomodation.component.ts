@@ -22,6 +22,11 @@ export class FindAccomodationComponent implements OnInit {
   properties: IProperties[];
   images: any[];
   imagePath: any;
+  val: number;
+  isSearched = false;
+  selectedCity: SelectItem;
+  selectedProType: SelectItem;
+  selectedArea: SelectItem;
   constructor(
     private appService: AppService
   ) {
@@ -36,17 +41,34 @@ export class FindAccomodationComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCityDorpdown();
-    this.getAreaDorpdown();
+    // this.getAreaDorpdown();
     this.getPropertyTypeDorpdown();
     this.getProperties();
   }
 
+  onSearchClick(): void {
+    this.getProperties();
+    this.isSearched = true;
+  }
   getProperties(): void {
-    this.appService.getProperties().subscribe(properties => {
+    this.appService.getProperties(this.selectedArea.id, this.selectedProType.id).subscribe(properties => {
       this.properties = properties;
     });
   }
 
+  onCityChange(item): void {
+    console.log(item);
+    this.selectedCity = item;
+    this.getAreaDorpdown()
+  }
+  onAreaChange(item): void {
+    console.log(item);
+    this.selectedArea = item;
+  }
+  onProTypeChange(item): void {
+    console.log(item);
+    this.selectedProType = item;
+  }
   getCityDorpdown(): void {
     this.appService.getCities().subscribe(city => {
       this.cities = this.getCitiesComboItems(city);
@@ -54,7 +76,7 @@ export class FindAccomodationComponent implements OnInit {
   }
 
   getAreaDorpdown(): void {
-    this.appService.getArea(1).subscribe(area => {
+    this.appService.getArea(this.selectedCity.id).subscribe(area => {
       this.area = this.getAreaComboItems(area);
     });
   }

@@ -31,7 +31,7 @@
         <div class="p-col-12 p-md-1 p-lg-2"></div>
         <div class="p-col-12 p-md-2 p-lg-1"><label>Upload Pictures</label></div>
         <div class="p-col-12 p-md-3 p-lg-3">
-            <p-fileUpload #fileInput name="templateFile[]" accept=".png" chooseLabel="Browse/Drag" customUpload="true"
+            <p-fileUpload #fileInput name="templateFile[]" accept=".png , .jpg, .webp" chooseLabel="Browse/Drag" customUpload="true"
                 multiple="multiple" (uploadHandler)="onTemplateUpload()">
                 <ng-template pTemplate="content">
                     <ul *ngIf="uploadedFiles.length">
