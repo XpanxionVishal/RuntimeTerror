@@ -9,7 +9,7 @@ import { NotificationService } from '../services/notification.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'RuntimeTerrorWeb';
+  title = 'Safe Home';
   isPostAd = false;
   isAccomodation = false;
   isLogin = false;
