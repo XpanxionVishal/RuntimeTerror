@@ -11,7 +11,7 @@ namespace api.Controllers
 {
     [ApiController]
     [Route("api/Property")]
-    public class PropertyController: ControllerBase
+    public class PropertyController : ControllerBase
     {
         private readonly IPropertyService propertyService;
 
@@ -20,10 +20,10 @@ namespace api.Controllers
             this.propertyService = propertyService;
         }
 
-        [HttpGet, Route("GetProperties")]
-        public List<PropertyDTO> GetProperties()
+        [HttpGet, Route("GetProperties/{areaId}/{propertyTypeId}")]
+        public List<PropertyDTO> GetProperties(int areaId, int propertyTypeId)
         {
-            return this.propertyService.GetProperties();
+            return this.propertyService.GetProperties(areaId, propertyTypeId);
         }
 
         [HttpPost, Route("SaveProperty")]
@@ -40,6 +40,12 @@ namespace api.Controllers
             propertyDTO.PropertyTypeId = (int)jsonObject["propertyTypeId"].Value;
 
             this.propertyService.SaveProperty(filesList, propertyDTO);
+        }
+
+        [HttpPut, Route("BookProperty")]
+        public void BookProperty([FromBody] PropertyDTO property)
+        {
+            this.propertyService.BookProperty((property.OccupiedBy ?? 0), property.PropertyId);
         }
     }
 }

@@ -21,14 +21,16 @@ namespace api.Repos
             this.apiContext = apiContext;
         }
 
-        public List<PropertyDTO> GetProperties()
+        public List<PropertyDTO> GetProperties(int areaId, int propertyTypeId)
         {
             List<PropertyDTO> property = new List<PropertyDTO>();
             property = (from p in this.apiContext.Property
                         join pt in this.apiContext.PropertyType on p.PropertyTypeId equals pt.TypeId
                         join a in this.apiContext.Area on p.AreaId equals a.AreaId
+                        join c in this.apiContext.City on a.CityId equals c.CityId
                         join u1 in this.apiContext.User on p.PostedBy equals u1.UserId
                         //join u2 in this.apiContext.User on p.AreaId equals a.AreaId
+                        where p.AreaId == areaId && p.PropertyTypeId == propertyTypeId && p.IsOccupied == false
                         select new PropertyDTO
                         {
                             PropertyId = p.PropertyId,
@@ -39,6 +41,7 @@ namespace api.Repos
                             PostedBy = u1.Name,
                             IsOccupied = p.IsOccupied,
                             OwnerName = p.OwnerName,
+                            City = c.CityName,
                             AreaId = p.AreaId ?? 0,
                             PropertyTypeId = p.PropertyTypeId ?? 0,
                             PostedByUserId = p.PostedBy ?? 0,
@@ -69,6 +72,15 @@ namespace api.Repos
             property.OwnerName,
             property.CostPerDay
             );
+        }
+
+        public void BookProperty(int bookedByUserId, int propertyId)
+        {
+            Property property = (from p in this.apiContext.Property where p.PropertyId == propertyId select p).FirstOrDefault();
+
+            property.IsOccupied = true;
+            property.OccupiedBy = bookedByUserId;
+            this.apiContext.SaveChanges();
         }
     }
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace api.Entities
 {
@@ -13,7 +10,8 @@ namespace api.Entities
         public string Name { get; set; }
         [StringLength(256)]
         public string Email { get; set; }
-        public int? UserTypeId { get; set; }
+        public bool IsSeller { get; set; }
+        public bool IsBuyer { get; set; }
         public string Password { get; set; }
     }
 }
