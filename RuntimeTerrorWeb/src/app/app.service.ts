@@ -6,6 +6,7 @@ import { IArea } from 'src/domain/iarea';
 import { IProperties } from 'src/domain/iproperties';
 import { IPropertyType } from 'src/domain/iproperty-type';
 import { environment } from 'src/environments/environment';
+import { IUser } from './domain/IUser';
 
 
 @Injectable({
@@ -33,5 +34,9 @@ export class AppService {
 
   postAd(property: any): Observable<any> {
     return this.httpClient.post<any>(environment.apiUrl + 'Property/SaveProperty', property);
+  }
+
+  getUserDetails(email): Observable<IUser> {
+    return this.httpClient.get<IUser>(environment.apiUrl + 'Login/GetUserDetails/' + email);
   }
 }

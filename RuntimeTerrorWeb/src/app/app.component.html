@@ -4,7 +4,19 @@
             <span (click)="accomodation()" style="margin: 0em 1em 0 3em" class="menus">Find
                 Accomodation</span>
             <span (click)="postAd()" class="menus">Post An Ad</span>
-            <span (click)="login()" class="login-menu">Sign In/Sign Up</span>
+            <span *ngIf = "!isSessionOn" (click)="login()" class="login-menu">Sign In/Sign Up</span>
+            <span>
+                <!-- <p-menu #menu [popup]="true" appendTo="body" [model]="items" [style]="{'z-index':'9999'}"></p-menu>
+                <button class="user-profile text-center pull-right m-t-10 button-height" data-toggle="dropdown" (click)="menu.toggle($event)">
+                    {{userName}} <i class="pi pi-angle-down"></i>
+                </button> -->
+                <button *ngIf = "isSessionOn" (click)="onLogoutConfirmation()" class="login-menu">
+                    Logout
+                </button>
+                <button *ngIf = "isSessionOn" class="login-menu">
+                    Hi {{userName}}
+                </button>
+            </span>
         </div>
     </div>
     <div class="p-grid">

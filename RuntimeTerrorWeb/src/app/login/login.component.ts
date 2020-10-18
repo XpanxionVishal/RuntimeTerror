@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { IUser } from '../domain/IUser';
 import { AuthService } from '../../services/auth.service';
 import { EncrDecrService } from '../../services/encr-decr.service';
+import { AppService } from '../app.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +26,9 @@ export class LoginComponent implements OnInit {
     private router: Router,
     public authService: AuthService,
     private http: HttpClient,
-    private EncrDecr: EncrDecrService
+    private EncrDecr: EncrDecrService,
+    private appService: AppService,
+    private notificationService: NotificationService,
   ) { }
 
   ngOnInit(): void {
@@ -48,11 +52,14 @@ export class LoginComponent implements OnInit {
       this.http.post('https://localhost:5001/api/Login/CheckIsUserLoggedIn',
         formData).subscribe(event => {
           if (event) {
-            console.log('Login successful');
-            localStorage.setItem('isLoggedIn', 'true');
-            localStorage.setItem('token', this.f.email.value);
-            this.isLoggedIn = true;
-            this.message = '';
+            this.appService.getUserDetails(formData.email).subscribe(userDetails => {
+              console.log('Login successful');
+              localStorage.setItem('isLoggedIn', 'true');
+              localStorage.setItem('token', userDetails.name);
+              this.isLoggedIn = true;
+              this.message = '';
+              this.notificationService.notifyLoggedInUserExists(userDetails.name);
+            });
           }
           else {
             this.message = 'Please check your email and password';
