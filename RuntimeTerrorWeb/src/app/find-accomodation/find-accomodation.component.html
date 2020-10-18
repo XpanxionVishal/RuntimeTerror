@@ -34,7 +34,7 @@
             <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
                 <tr>
                     <td> {{rowIndex + 1}} </td>
-                    <p-dialog header="Book An Accomodation" [(visible)]="display" modal="true">
+                    <p-dialog header="Book An Accomodation" [draggable]="false" [(visible)]="display" modal="true">
                         <div>
                             <img src="/assets/PaymentGateway.png" class="payment" />
                         </div>

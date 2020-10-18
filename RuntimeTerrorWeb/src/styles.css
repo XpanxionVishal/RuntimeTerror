@@ -56,3 +56,6 @@
     background-color: #ffffff;
     width: 50%;
 }
+.p-component-overlay {
+    background-color: #00000018 !important;
+}
