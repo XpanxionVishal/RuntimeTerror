@@ -1,0 +1,57 @@
+<div class="container" style="align-content: center">
+    <div class="col-md-6 col-md-offset-3 loginBox">
+        <h3>Log In</h3>
+        <form [formGroup]="registrationForm" (ngSubmit)="registerUser(registrationForm.value)">
+            <div class="form-group clearfix" [ngClass]="{ 'has-error': submitted && f.email.errors }">
+                <label for="email" class="col-md-3 col-sm-5 col-xs-12">Email</label>
+                <div class="col-md-9 col-sm-7 col-xs-12">
+                    <input type="text" class="form-control" formControlName="email" />
+                    <div *ngIf="submitted && f.email.errors" class="help-block">
+                        <div *ngIf="f.email.errors.required">email is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group clearfix" [ngClass]="{ 'has-error': submitted && f.password.errors }">
+                <label for="password" class="col-md-3 col-sm-5 col-xs-12">Password</label>
+                <div class="col-md-9 col-sm-7 col-xs-12">
+                    <input type="password" class="form-control" formControlName="password" />
+                    <div *ngIf="submitted && f.password.errors" class="help-block">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group clearfix" [ngClass]="{ 'has-error': submitted && f.email.errors }">
+                <label for="email" class="col-md-3 col-sm-5 col-xs-12">Name</label>
+                <div class="col-md-9 col-sm-7 col-xs-12">
+                    <input type="text" class="form-control" formControlName="name" />
+                    <div *ngIf="submitted && f.email.errors" class="help-block">
+                        <div *ngIf="f.email.errors.required">name is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group clearfix" [ngClass]="{ 'has-error': submitted && f.isBuyer.errors }">
+                <label>IsBuyer</label>
+                <div class="col-md-9 col-sm-7 col-xs-12">
+                    <p-radioButton name="isBuyer" [value]="true" label="Yes" formControlName="isBuyer"
+                        inputId="isBuyer"></p-radioButton>
+                    <p-radioButton name="isBuyer" [value]="false" label="No" formControlName="isBuyer"
+                        inputId="isBuyer"></p-radioButton>
+                </div>
+            </div>
+
+            <div class="form-group clearfix" [ngClass]="{ 'has-error': submitted && f.isSeller.errors }">
+                <label>IsSeller</label>
+                <div class="col-md-9 col-sm-7 col-xs-12">
+                    <p-radioButton name="isSeller" [value]="true" label="Yes" formControlName="isSeller"
+                        inputId="isSeller"></p-radioButton>
+                    <p-radioButton name="isSeller" [value]="false" label="No" formControlName="isSeller"
+                        inputId="isSeller"></p-radioButton>
+                </div>
+            </div>
+            <div class="col-xs-12 form-group text-right">
+                <button class="btn btn-success" type="submit">Register</button>
+            </div>
+        </form>
+    </div>
+</div>

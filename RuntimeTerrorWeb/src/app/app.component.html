@@ -14,8 +14,11 @@
         <div *ngIf="isPostAd">
             <app-post-ad></app-post-ad>
         </div>
-        <div *ngIf="isLogin">
+        <div *ngIf="isLogin" style="width: 100%;margin: 5rem; ">
             <app-login></app-login>
         </div>
+        <div *ngIf="isRegistration" style="width: 100%; margin: 5rem;">
+            <app-register-user></app-register-user>
+         </div>
     </div>
 </form>
