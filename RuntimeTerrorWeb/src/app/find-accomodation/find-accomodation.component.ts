@@ -25,8 +25,8 @@ export class FindAccomodationComponent implements OnInit {
   selectedCityId: SelectItem;
   selectedProTypeId: SelectItem;
   selectedAreaId: SelectItem;
+  display = false;
   constructor(private appService: AppService) { }
-
   ngOnInit(): void {
     this.getCityDorpdown();
     this.getPropertyTypeDorpdown();
@@ -35,9 +35,14 @@ export class FindAccomodationComponent implements OnInit {
 
   onSearchClick(): void {
     this.isSearched = true;
-    this.appService.getProperties(this.selectedAreaId, this.selectedProTypeId).subscribe(properties => {
+    this.appService.getProperties(1, 1).subscribe(properties => {
+      // this.appService.getProperties(this.selectedAreaId, this.selectedProTypeId).subscribe(properties => {
       this.properties = properties;
     });
+  }
+
+  onBookNowClick(): void {
+    this.display = true;
   }
 
   onCityChange(id): void {

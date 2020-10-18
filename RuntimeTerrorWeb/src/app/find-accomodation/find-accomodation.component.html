@@ -1,5 +1,5 @@
 <div class="p-grid p-lg-12">
-    <div class=" p-grid p-md-12 p-lg-12" style="text-align: center;">
+    <div class=" p-grid p-md-12 p-lg-12" style="text-align: center; background-color: navajowhite;">
         <div class="p-col-12 p-md-1 p-lg-1"><label>City</label></div>
         <div class="p-col-12 p-md-2 p-lg-2">
             <p-dropdown [options]="cities" (onChange)="onCityChange($event.value.id)"></p-dropdown>
@@ -34,6 +34,13 @@
             <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
                 <tr>
                     <td> {{rowIndex + 1}} </td>
+                    <p-dialog header="Book An Accomodation" [(visible)]="display" modal="true">
+                        <div>
+                            <img src="/assets/PaymentGateway.png" class="payment" />
+                        </div>
+                        <button pButton type="button" label="Book Now" (click)="onBookNowClick()"
+                            class="p-button-warning"></button>
+                    </p-dialog>
                     <td colspan="6" style="display: flex; justify-content: center;">
                         <div class="p-grid" *ngFor="let photo of rowData.propertyPhotos" style="padding: 0 1.5em 0 0;">
                             <img class="image" src="{{'data:image/jpg;base64,' + photo.photo}}"
@@ -51,7 +58,10 @@
                     </td>
                     <td>{{rowData.ownerName}}</td>
                     <td>{{rowData.costPerDay}}</td>
-                    <td></td>
+                    <td>
+                        <button pButton type="button" label="Book Now" (click)="onBookNowClick()"
+                            class="p-button-warning"></button>
+                    </td>
                 </tr>
             </ng-template>
         </p-table>
