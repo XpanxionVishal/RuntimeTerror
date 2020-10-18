@@ -4,6 +4,8 @@
             <span (click)="accomodation()" style="margin: 0em 1em 0 3em" class="menus">Find
                 Accomodation</span>
             <span (click)="postAd()" class="menus">Post An Ad</span>
+            <span class="tittle" style="margin-left: 25%;"><img src="/assets/home.png/" width="25" height="25"
+                    style="padding: 0px 8px 4px 0;vertical-align: middle;">Safe Home</span>
             <span (click)="login()" class="login-menu">Sign In/Sign Up</span>
         </div>
     </div>
@@ -19,6 +21,6 @@
         </div>
         <div *ngIf="isRegistration" style="width: 100%; margin: 5rem;">
             <app-register-user></app-register-user>
-         </div>
+        </div>
     </div>
 </form>
