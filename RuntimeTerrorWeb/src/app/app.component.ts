@@ -18,6 +18,7 @@ export class AppComponent {
   @ViewChild('logout')
   userName: string;
   items: MenuItem[];
+  display = false;
 
   constructor(
     private notificationService: NotificationService,
@@ -56,10 +57,14 @@ export class AppComponent {
   }
 
   postAd() {
-    this.isPostAd = true;
-    this.isAccomodation = false;
-    this.isLogin = false;
-    this.isRegistration = false;
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+      this.isPostAd = true;
+      this.isAccomodation = false;
+      this.isLogin = false;
+      this.isRegistration = false;
+    } else {
+      this.display = true;
+    }
   }
 
   login() {
@@ -76,10 +81,15 @@ export class AppComponent {
     this.isAccomodation = false;
   }
 
-  onLogoutConfirmation(): any {
+  onLogoutConfirmation() {
     this.userName = '';
     localStorage.setItem('isLoggedIn', 'false');
     localStorage.setItem('token', null);
+    localStorage.setItem('userId', null);
     this.isSessionOn = false;
+  }
+
+  onPopupOKClick() {
+    this.display = false;
   }
 }

@@ -36,7 +36,7 @@ namespace api.Controllers
             propertyDTO.Address = jsonObject["address"].Value;
             propertyDTO.CostPerDay = (decimal)jsonObject["costPerDay"].Value;
             propertyDTO.OwnerName = jsonObject["ownerName"].Value;
-            propertyDTO.PostedByUserId = (int)jsonObject["postedByUserId"].Value;
+            propertyDTO.PostedByUserId = Convert.ToInt32(jsonObject["postedByUserId"].Value);
             propertyDTO.PropertyTypeId = (int)jsonObject["propertyTypeId"].Value;
 
             this.propertyService.SaveProperty(filesList, propertyDTO);

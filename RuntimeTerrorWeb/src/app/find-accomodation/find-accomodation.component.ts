@@ -41,7 +41,7 @@ export class FindAccomodationComponent implements OnInit {
     });
   }
 
-  onBookNowClick(): void {
+  onBookNowClick(rowData): void {
     this.display = true;
   }
 

@@ -30,8 +30,6 @@ export class RegisterUserComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required],
       name: ['', Validators.required],
-      isBuyer: ['', Validators.required],
-      isSeller: ['', Validators.required],
       userId: [0]
     });
     this.returnUrl = '/dashboard';

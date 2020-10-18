@@ -38,6 +38,7 @@ export class PostAdComponent implements OnInit {
   };
   public progress: number;
   public message: string;
+  isUserLoggedIn = false;
 
   ngOnInit(): void {
     this.getCityDorpdown();
@@ -178,6 +179,7 @@ export class PostAdComponent implements OnInit {
   }
 
   onPostAdClick(): void {
+
     const files = this.fileInput.files;
     this.fileModel.fileContent = files;
     const formData = new FormData();
@@ -195,7 +197,7 @@ export class PostAdComponent implements OnInit {
       area: this.postAdForm.value.area.name,
       areaId: this.postAdForm.value.area.id,
       postedBy: this.postAdForm.value.postedBy,
-      postedByUserId: 1,                            // LoggedIn USer
+      postedByUserId: localStorage.getItem('userId'),
       address: this.postAdForm.value.address,
       ownerName: this.postAdForm.value.ownerName,
       costPerDay: +this.postAdForm.value.costPerDay,
@@ -209,4 +211,6 @@ export class PostAdComponent implements OnInit {
       console.log(res);
     });
   }
+
+
 }

@@ -30,25 +30,6 @@
                 </div>
             </div>
 
-            <div class="form-group clearfix" [ngClass]="{ 'has-error': submitted && f.isBuyer.errors }">
-                <label>IsBuyer</label>
-                <div class="col-md-9 col-sm-7 col-xs-12">
-                    <p-radioButton name="isBuyer" [value]="true" label="Yes" formControlName="isBuyer"
-                        inputId="isBuyer"></p-radioButton>
-                    <p-radioButton name="isBuyer" [value]="false" label="No" formControlName="isBuyer"
-                        inputId="isBuyer"></p-radioButton>
-                </div>
-            </div>
-
-            <div class="form-group clearfix" [ngClass]="{ 'has-error': submitted && f.isSeller.errors }">
-                <label>IsSeller</label>
-                <div class="col-md-9 col-sm-7 col-xs-12">
-                    <p-radioButton name="isSeller" [value]="true" label="Yes" formControlName="isSeller"
-                        inputId="isSeller"></p-radioButton>
-                    <p-radioButton name="isSeller" [value]="false" label="No" formControlName="isSeller"
-                        inputId="isSeller"></p-radioButton>
-                </div>
-            </div>
             <div class="col-xs-12 form-group text-right">
                 <button class="btn btn-success" type="submit">Register</button>
             </div>

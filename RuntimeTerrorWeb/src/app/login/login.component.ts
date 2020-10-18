@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
               console.log('Login successful');
               localStorage.setItem('isLoggedIn', 'true');
               localStorage.setItem('token', userDetails.name);
+              localStorage.setItem('userId', userDetails.userId);
               this.isLoggedIn = true;
               this.message = '';
               this.notificationService.notifyLoggedInUserExists(userDetails.name);

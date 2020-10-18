@@ -33,8 +33,6 @@ namespace api.Repos
                     select new UserDTO()
                     {
                         Email = email,
-                        IsBuyer = user.IsBuyer,
-                        IsSeller = user.IsSeller,
                         Name = user.Name,
                         Password = null,
                         UserId = user.UserId
@@ -48,8 +46,6 @@ namespace api.Repos
                 Password = userDTO.Password,
                 Email = userDTO.Email,
                 Name = userDTO.Name,
-                IsBuyer = userDTO.IsBuyer,
-                IsSeller = userDTO.IsSeller,
                 UserId = 0      // User Id to be auto increemented
             };
 
