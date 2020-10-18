@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/services/auth.service';
+import { AuthService } from '../../services/auth.service';
+import { EncrDecrService } from '../../services/encr-decr.service'
 
 @Component({
   selector: 'app-register-user',
@@ -20,7 +21,9 @@ export class RegisterUserComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     public authService: AuthService,
-    private http: HttpClient) { }
+    private http: HttpClient,
+    private EncrDecr: EncrDecrService,
+    ) { }
 
   ngOnInit(): void {
     this.registrationForm = this.formBuilder.group({
@@ -41,6 +44,7 @@ export class RegisterUserComponent implements OnInit {
       return;
     }
     else {
+      formData.password = this.EncrDecr.set('123456$#@$^@1ERF', formData.password);
       this.http.post('https://localhost:5001/api/Login/RegisterUser',
         formData).subscribe(event => {
           if (event) {
