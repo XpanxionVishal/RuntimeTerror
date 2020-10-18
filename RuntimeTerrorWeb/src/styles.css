@@ -36,3 +36,23 @@
     justify-content: center;
     border-radius: 5px;
 }
+
+.p-dialog {
+    background-color: white;
+    width: 55%;
+    border-radius: 15px;
+    color: #333333;
+    padding: 0.571em 1em;
+    transform: scale(1);
+}
+.p-dialog-header {
+    font-size: 20px;
+    height: 5vh;
+    font-weight: bold;
+    border-bottom: 1px solid #decfcf;
+}
+
+.p-card-body {
+    background-color: #ffffff;
+    width: 50%;
+}

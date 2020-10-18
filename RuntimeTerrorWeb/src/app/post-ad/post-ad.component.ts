@@ -81,9 +81,9 @@ export class PostAdComponent implements OnInit {
   private addFirstItem(): Array<SelectItem> {
     const items: Array<SelectItem> = [];
     const subItem = {
-      'id': -1,
-      'code': '',
-      'name': null
+      id: -1,
+      code: '',
+      name: null
     };
 
     const item: SelectItem = { label: '--- select ---', value: subItem };

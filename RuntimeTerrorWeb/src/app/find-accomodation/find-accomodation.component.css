@@ -29,7 +29,11 @@
 .p-grid {
     margin-top: 0.5rem !important;
 }
-.image{
+.image {
     border: 1px solid;
     border-radius: 10px;
+}
+.payment {
+    width: 70%;
+    height: 30vh;
 }

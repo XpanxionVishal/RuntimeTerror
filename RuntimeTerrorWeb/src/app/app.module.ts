@@ -18,12 +18,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { GalleriaModule } from 'primeng/galleria';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
-import {EncrDecrService} from '../services/encr-decr.service';
-import {OverlayPanelModule} from 'primeng/overlaypanel';
-import {SliderModule} from 'primeng/slider';
+import { EncrDecrService } from '../services/encr-decr.service';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { SliderModule } from 'primeng/slider';
 import { RegisterUserComponent } from './register-user/register-user.component';
-import {RadioButtonModule} from 'primeng/radiobutton';
-
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
   declarations: [
@@ -53,6 +53,8 @@ import {RadioButtonModule} from 'primeng/radiobutton';
     OverlayPanelModule,
     SliderModule,
     RadioButtonModule,
+    DialogModule,
+    CardModule,
   ],
   providers: [EncrDecrService],
   bootstrap: [AppComponent]
