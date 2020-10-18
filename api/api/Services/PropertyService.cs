@@ -43,5 +43,10 @@ namespace api.Services
 
             this.propertyRepository.SaveProperty(propertyPhotos, property);
         }
+
+        public void BookProperty(int bookedByUserId, int propertyId)
+        {
+            this.propertyRepository.BookProperty(bookedByUserId, propertyId);
+        }
     }
 }

@@ -56,6 +56,7 @@ namespace api.Repos
             if (!(from u in this.apiContext.User where u.Email == userDTO.Email select u).Any())
             {
                 this.apiContext.User.Add(user);
+                this.apiContext.SaveChanges();
                 return true;
             }
             else

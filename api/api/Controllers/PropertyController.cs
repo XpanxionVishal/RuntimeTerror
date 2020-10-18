@@ -11,7 +11,7 @@ namespace api.Controllers
 {
     [ApiController]
     [Route("api/Property")]
-    public class PropertyController: ControllerBase
+    public class PropertyController : ControllerBase
     {
         private readonly IPropertyService propertyService;
 
@@ -40,6 +40,12 @@ namespace api.Controllers
             propertyDTO.PropertyTypeId = (int)jsonObject["propertyTypeId"].Value;
 
             this.propertyService.SaveProperty(filesList, propertyDTO);
+        }
+
+        [HttpPut, Route("BookProperty")]
+        public void BookProperty([FromBody] PropertyDTO property)
+        {
+            this.propertyService.BookProperty((property.OccupiedBy ?? 0), property.PropertyId);
         }
     }
 }

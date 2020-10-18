@@ -11,5 +11,6 @@ namespace api.Interfaces
     {
         List<PropertyDTO> GetProperties(int areaId, int propertyTypeId);
         void SaveProperty(List<IFormFile> photoList, PropertyDTO property);
+        void BookProperty(int bookedByUserId, int propertyId);
     }
 }

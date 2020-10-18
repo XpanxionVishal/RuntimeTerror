@@ -73,5 +73,14 @@ namespace api.Repos
             property.CostPerDay
             );
         }
+
+        public void BookProperty(int bookedByUserId, int propertyId)
+        {
+            Property property = (from p in this.apiContext.Property where p.PropertyId == propertyId select p).FirstOrDefault();
+
+            property.IsOccupied = true;
+            property.OccupiedBy = bookedByUserId;
+            this.apiContext.SaveChanges();
+        }
     }
 }
