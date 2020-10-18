@@ -24,5 +24,17 @@ namespace api.Controllers
         {
             return this.loginService.CheckIsUserLoggedIn(loginDTO);
         }
+
+        [HttpGet, Route("GetUserDetails/{email}")]
+        public UserDTO GetUserDetails(string email)
+        {
+            return this.loginService.GetUserDetails(email);
+        }
+
+        [HttpPost, Route("RegisterUser")]
+        public bool RegisterUser([FromBody] UserDTO user)
+        {
+            return this.loginService.RegisterUser(user);
+        }
     }
 }

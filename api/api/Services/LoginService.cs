@@ -19,5 +19,15 @@ namespace api.Services
         {
             return this.loginRepository.CheckIsUserLoggedIn(loginDTO);
         }
+
+        public UserDTO GetUserDetails(string email)
+        {
+            return this.loginRepository.GetUserDetails(email);
+        }
+
+        public bool RegisterUser(UserDTO userDTO)
+        {
+            return this.loginRepository.RegisterUser(userDTO);
+        }
     }
 }
