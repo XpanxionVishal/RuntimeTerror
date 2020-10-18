@@ -20,10 +20,10 @@ namespace api.Controllers
             this.propertyService = propertyService;
         }
 
-        [HttpGet, Route("GetProperties")]
-        public List<PropertyDTO> GetProperties()
+        [HttpGet, Route("GetProperties/{areaId}/{propertyTypeId}")]
+        public List<PropertyDTO> GetProperties(int areaId, int propertyTypeId)
         {
-            return this.propertyService.GetProperties();
+            return this.propertyService.GetProperties(areaId, propertyTypeId);
         }
 
         [HttpPost, Route("SaveProperty")]

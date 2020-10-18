@@ -11,6 +11,7 @@ namespace api.DTOs
         public string PropertyType { get; set; }
         public int PropertyTypeId { get; set; }
         public string Area { get; set; }
+        public string City { get; set; }
         public int AreaId { get; set; }
         public string PostedBy { get; set; }
         public int PostedByUserId { get; set; }

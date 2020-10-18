@@ -18,9 +18,9 @@ namespace api.Services
             this.propertyRepository = propertyRepository;
         }
 
-        public List<PropertyDTO> GetProperties()
+        public List<PropertyDTO> GetProperties(int areaId, int propertyTypeId)
         {
-            return this.propertyRepository.GetProperties();
+            return this.propertyRepository.GetProperties(areaId, propertyTypeId);
         }
 
         public void SaveProperty(List<IFormFile> photoList, PropertyDTO property)

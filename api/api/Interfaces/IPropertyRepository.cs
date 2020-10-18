@@ -8,7 +8,7 @@ namespace api.Interfaces
 {
     public interface IPropertyRepository
     {
-        List<PropertyDTO> GetProperties();
+        List<PropertyDTO> GetProperties(int areaId, int propertyTypeId);
         void SaveProperty(IList<PropertyPhotoDTO> photoList, PropertyDTO property);
     }
 }
