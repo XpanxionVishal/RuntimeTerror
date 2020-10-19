@@ -110,3 +110,12 @@ th {
 label {
     font-family: cursive;
 }
+
+.p-button.p-fileupload-choose {
+    overflow: hidden;
+    position: relative;
+    border-radius: 3px;
+    background-color: #ffffff;
+    height: 3.8vh;
+    width: 80%;
+}

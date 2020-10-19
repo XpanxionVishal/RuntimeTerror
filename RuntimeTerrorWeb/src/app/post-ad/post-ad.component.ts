@@ -39,6 +39,7 @@ export class PostAdComponent implements OnInit {
   public progress: number;
   public message: string;
   isUserLoggedIn = false;
+  responseMessage = '';
 
   ngOnInit(): void {
     this.getCityDorpdown();
@@ -209,9 +210,18 @@ export class PostAdComponent implements OnInit {
     this.appService.postAd(formData).subscribe(res => {
       console.log(this.postAdForm.value);
       console.log(res);
+
+      setTimeout(() => {
+        this.responseMessage = 'Ad posted successfully';
+      }, 1000);
+      this.responseMessage = '';
+    }, () => {
+      setTimeout(() => {
+        this.responseMessage = 'Ad post failed';
+      }, 1000);
+      this.responseMessage = '';
     });
     this.postAdForm.reset();
   }
-
-
 }
+

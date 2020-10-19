@@ -1,5 +1,5 @@
 <div class="p-grid" style="background-color:navajowhite; width: 30%; border-radius: 30px; margin: 5% 38% 0;">
-    <div *ngIf="!isLoggedIn && !isRegisterd" style="text-align: center; width: 100%;">
+    <div *ngIf="!isLoggedIn" style="text-align: center; width: 100%;">
         <div class="p-col-12 p-md-12 p-lg-12 margin-top" *ngIf="!isNewUser">
             <h3>Log In</h3>
             <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
@@ -19,7 +19,7 @@
                     <button class="btn btn-success" pButton label="LogIn" type="submit"></button>
                 </div>
                 <div class="p-col-12 p-md-12 p-lg-12 margin">
-                    <label> click here to <a (click)="isNewUser = true">Register</a></label>
+                    <label> click here to <a href="#" (click)="isNewUser = true">Register</a></label>
                 </div>
             </form>
         </div>
