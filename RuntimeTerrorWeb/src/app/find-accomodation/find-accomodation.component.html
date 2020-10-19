@@ -50,7 +50,15 @@
                         <div>
                             <img src="/assets/PaymentGateway.png" class="payment" />
                         </div>
-                        <button pButton type="button" label="Book Now" (click)="onBookNowClick()"
+                        <br /> <br /> <br />
+                        <button pButton type="button" label="Book Now" (click)="onBookNowClick(rowData)"
+                            class="p-button-warning"></button>
+                    </p-dialog>
+                    <p-dialog header="Please login booking this accomodation!" [draggable]="false" [(visible)]="displayLoginPopup"
+                        modal="true">
+                        <br />
+                        <br />
+                        <button pButton type="button" label="OK" (click)="onLoginPopupOKClick()"
                             class="p-button-warning"></button>
                     </p-dialog>
                     <td style="display: flex; justify-content: center;">

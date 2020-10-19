@@ -26,6 +26,7 @@ export class FindAccomodationComponent implements OnInit {
   selectedProTypeId: SelectItem;
   selectedAreaId: SelectItem;
   display = false;
+  displayLoginPopup = false;
   constructor(private appService: AppService) { }
   ngOnInit(): void {
     this.getCityDorpdown();
@@ -41,8 +42,22 @@ export class FindAccomodationComponent implements OnInit {
     });
   }
 
-  onBookNowClick(): void {
+  onBookNowClick(rowData): void {
     this.display = true;
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+      rowData.occupiedBy = parseInt(localStorage.getItem('userId'), 10);
+      this.appService.bookProperty(rowData).subscribe(property => {
+        this.display = false;
+        this.onSearchClick();
+      });
+    } else {
+      this.display = false;
+      this.displayLoginPopup = true;
+    }
+  }
+
+  onLoginPopupOKClick() {
+    this.displayLoginPopup = false;
   }
 
   onCityChange(id): void {

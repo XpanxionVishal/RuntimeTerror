@@ -24,6 +24,7 @@ import { SliderModule } from 'primeng/slider';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { DialogModule } from 'primeng/dialog';
+import { MenuModule } from 'primeng/menu';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { DialogModule } from 'primeng/dialog';
     RadioButtonModule,
     DialogModule,
     CardModule,
+    MenuModule
   ],
   providers: [EncrDecrService],
   bootstrap: [AppComponent]
