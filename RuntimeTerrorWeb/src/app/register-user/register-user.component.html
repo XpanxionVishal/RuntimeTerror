@@ -1,37 +1,28 @@
-<div class="container" style="align-content: center">
-    <div class="col-md-6 col-md-offset-3 loginBox">
-        <h3>Log In</h3>
+<div class="p-grid" style="align-content: center">
+    <div *ngIf="!isRegistered" class="p-col-12 p-md-12 p-lg-12 margin-top">
+        <h3>Register User</h3>
         <form [formGroup]="registrationForm" (ngSubmit)="registerUser(registrationForm.value)">
-            <div class="form-group clearfix" [ngClass]="{ 'has-error': submitted && f.email.errors }">
-                <label for="email" class="col-md-3 col-sm-5 col-xs-12">Email</label>
-                <div class="col-md-9 col-sm-7 col-xs-12">
-                    <input type="text" class="form-control" formControlName="email" />
-                    <div *ngIf="submitted && f.email.errors" class="help-block">
-                        <div *ngIf="f.email.errors.required">email is required</div>
-                    </div>
+            <div>
+                <label for="email" class="p-col-12 p-md-12 p-lg-12 margin">Email</label>
+                <div class="p-col-12 p-md-12 p-lg-12 margin">
+                    <input type="text" formControlName="email" pInputText />
                 </div>
             </div>
-            <div class="form-group clearfix" [ngClass]="{ 'has-error': submitted && f.password.errors }">
-                <label for="password" class="col-md-3 col-sm-5 col-xs-12">Password</label>
-                <div class="col-md-9 col-sm-7 col-xs-12">
-                    <input type="password" class="form-control" formControlName="password" />
-                    <div *ngIf="submitted && f.password.errors" class="help-block">
-                        <div *ngIf="f.password.errors.required">Password is required</div>
-                    </div>
+            <div>
+                <label for="password" class="p-col-12 p-md-12 p-lg-12 margin">Password</label>
+                <div class="p-col-12 p-md-12 p-lg-12 margin">
+                    <input type="password" formControlName="password" pInputText />
                 </div>
             </div>
-            <div class="form-group clearfix" [ngClass]="{ 'has-error': submitted && f.email.errors }">
-                <label for="email" class="col-md-3 col-sm-5 col-xs-12">Name</label>
-                <div class="col-md-9 col-sm-7 col-xs-12">
-                    <input type="text" class="form-control" formControlName="name" />
-                    <div *ngIf="submitted && f.email.errors" class="help-block">
-                        <div *ngIf="f.email.errors.required">name is required</div>
-                    </div>
+            <div>
+                <label for="email" class="p-col-12 p-md-12 p-lg-12 margin">Name</label>
+                <div class="p-col-12 p-md-12 p-lg-12 margin">
+                    <input type="text" formControlName="name" pInputText />
                 </div>
             </div>
 
-            <div class="col-xs-12 form-group text-right">
-                <button class="btn btn-success" type="submit">Register</button>
+            <div class="p-col-12 p-md-12 p-lg-12 margin">
+                <button class="btn btn-success" pButton label="Register" type="submit"></button>
             </div>
         </form>
     </div>

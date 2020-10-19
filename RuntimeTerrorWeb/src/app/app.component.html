@@ -14,20 +14,23 @@
         <div *ngIf="isAccomodation" style="width: 100%;">
             <app-find-accomodation></app-find-accomodation>
         </div>
-        <div *ngIf="isPostAd" style=" margin: 5% 0 0 0;">
+        <div *ngIf="isPostAd" style="margin: 5% 0 0 0;">
             <app-post-ad></app-post-ad>
         </div>
-        <div *ngIf="isLogin" style="width: 100%;margin: 0, 5rem; ">
+        <div *ngIf="isLogin" style="width: 100%;margin: 0 0 0 0; ">
             <app-login></app-login>
         </div>
-        <div *ngIf="isRegistration" style="width: 100%; margin: 0, 5rem;">
+        <div *ngIf="isRegistration" style="width: 100%; margin: 5% 0 0 0;">
             <app-register-user></app-register-user>
         </div>
     </div>
 
-    <p-dialog header="Please login for posting ad!" [draggable]="false" [(visible)]="display" modal="true">
+    <p-dialog header="Please login for posting ads!" [draggable]="false" [style]="{width: '25vw'}" [(visible)]="display"
+        modal="true">
         <br />
         <br />
-        <button pButton type="button" label="OK" (click)="onPopupOKClick()" class="p-button-warning"></button>
+        <div style="text-align: center;">
+            <button pButton type="button" label="OK" (click)="onPopupOKClick()" class="p-button-warning"></button>
+        </div>
     </p-dialog>
 </form>

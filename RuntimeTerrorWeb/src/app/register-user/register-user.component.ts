@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { EncrDecrService } from '../../services/encr-decr.service'
+import { NotificationService } from 'src/services/notification.service';
 
 @Component({
   selector: 'app-register-user',
@@ -16,6 +17,7 @@ export class RegisterUserComponent implements OnInit {
   returnUrl: string;
   submitted: boolean;
   message: string;
+  isRegistered = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -23,7 +25,8 @@ export class RegisterUserComponent implements OnInit {
     public authService: AuthService,
     private http: HttpClient,
     private EncrDecr: EncrDecrService,
-    ) { }
+    private notificationService: NotificationService,
+  ) { }
 
   ngOnInit(): void {
     this.registrationForm = this.formBuilder.group({
@@ -49,6 +52,8 @@ export class RegisterUserComponent implements OnInit {
             console.log('Login successful');
             localStorage.setItem('isLoggedIn', 'true');
             localStorage.setItem('token', this.f.email.value);
+            this.isRegistered = true;
+            this.notificationService.notifyIfUserIsRegistered(true);
           }
           else {
             this.message = 'Registration Failed';

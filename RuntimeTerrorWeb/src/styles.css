@@ -52,6 +52,7 @@
     height: 5vh;
     font-weight: bold;
     border-bottom: 1px solid #decfcf;
+    font-family: cursive;
 }
 
 .p-card-body {

@@ -1,0 +1,21 @@
+.p-inputtext {
+    margin: 0;
+    height: 3.8vh;
+    border-radius: 5px;
+    width: 60%;
+    border-color: white;
+    border: none;
+}
+.p-button {
+    border-radius: 15px;
+    top: 0em;
+    background-color: #e4205a;
+    color: #ffffff;
+    width: 9em;
+}
+.margin {
+    margin: 0 0 2% 0;
+}
+.margin-top {
+    margin: 2% 0 2% 0;
+}

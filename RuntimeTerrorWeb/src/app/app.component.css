@@ -6,6 +6,12 @@ body {
     flex-wrap: wrap;
     /* margin: 8em !important; */
 }
+.p-button {
+    border-radius: 15px;
+    background-color: #e4205a;
+    color: #ffffff;
+    width: 9em;
+}
 .menu {
     /* width: 95%;
     margin: 1em; */
@@ -27,7 +33,7 @@ body {
 
 .tittle {
     position: relative;
-    top: 13px;
+    top: 8px;
     font-weight: bold;
     font-size: 20px;
     color: #ffffff;
@@ -37,7 +43,7 @@ body {
 
 .login-menu {
     position: relative;
-    top: 13px;
+    top: 8px;
     font-weight: bold;
     font-size: 20px;
     color: #ffffff;

@@ -20,6 +20,8 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   submitted: boolean;
   isLoggedIn = false;
+  isNewUser = false;
+  isRegistered = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,6 +40,9 @@ export class LoginComponent implements OnInit {
     });
     this.returnUrl = '/dashboard';
     this.authService.logout();
+    this.notificationService.registerUserNotification.subscribe((isRegister) => {
+      this.isRegistered = isRegister;
+    });
   }
 
   get f() { return this.loginForm.controls; }
