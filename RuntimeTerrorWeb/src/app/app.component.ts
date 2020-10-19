@@ -30,7 +30,7 @@ export class AppComponent {
     }
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.isAccomodation = true;
     this.notificationService.loginUserNotification.subscribe((loggedInUser) => {
       this.userName = loggedInUser;

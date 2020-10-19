@@ -19,6 +19,26 @@
         </div>
     </div>
 </div>
+<div class="p-grid p-md-12 p-lg-12" *ngIf="!isSearched">
+    <span class="about">
+        <h2>Why Safe Home?</h2>
+        We are proposing a solution which is an online Web Application.<br>
+        <br>
+        Targeted Audience<br>
+        1. COVID patients who need to home quarantine themselves, without risking the lives of their near and dear
+        ones<br>
+        2. The owners who are willing to makeup for the financial losses due to the economic slowdown in this COVID
+        situation<br>
+        <br>
+        High Level Idea<br>
+        1. Owners can post an advertise for the properties on the portal, with affordable pre-decided cost per day.<br>
+        2. The patients will find the property as per their requirements and budget and book the same as per
+        availability.<br>
+        3. The booked flats/houses will then be used as quarantine facilities for the COVID patients.<br>
+        <br>
+        This way both the owners and the patients will meet their objectives.<br>
+    </span>
+</div>
 <div class="p-grid p-md-12 p-lg-12" *ngIf="isSearched">
     <div class="p-grid p-md-12 p-lg-12" style="text-align: center;">
         <p-table [value]="properties" cellspacing="0" [scrollable]="true" scrollHeight="58vh" [paginator]="true"
@@ -54,8 +74,8 @@
                         <button pButton type="button" label="Book Now" (click)="onBookNowClick(rowData)"
                             class="p-button-warning"></button>
                     </p-dialog>
-                    <p-dialog header="Please login to book this accomodation!" [style]="{width: '30vw'}" [draggable]="false" [(visible)]="displayLoginPopup"
-                        modal="true">
+                    <p-dialog header="Please login to book this accomodation!" [style]="{width: '30vw'}"
+                        [draggable]="false" [(visible)]="displayLoginPopup" modal="true">
                         <br />
                         <br />
                         <button pButton type="button" label="OK" (click)="onLoginPopupOKClick()"
@@ -86,12 +106,11 @@
             </ng-template>
             <ng-template pTemplate="emptymessage" let-columns>
                 <tr>
-                  <td [attr.colspan]="6" [ngStyle]="{'text-align': 'center'}">
-                    No Data to show!!
-                  </td>
+                    <td [attr.colspan]="6" [ngStyle]="{'text-align': 'center'}">
+                        No Data to show!!
+                    </td>
                 </tr>
-              </ng-template>
+            </ng-template>
         </p-table>
     </div>
 </div>
-<!-- </div> -->

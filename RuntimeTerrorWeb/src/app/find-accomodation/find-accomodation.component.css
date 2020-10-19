@@ -44,3 +44,11 @@
     border-radius: 30px;
     width: 90%;
 }
+.about {
+    width: 55%;
+    margin: 3% 0% 0 22%;
+    padding: 2%;
+    background-color: navajowhite;
+    border-radius: 30px;
+    font-family: cursive;
+}

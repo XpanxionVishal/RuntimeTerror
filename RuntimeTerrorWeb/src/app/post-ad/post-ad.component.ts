@@ -95,7 +95,6 @@ export class PostAdComponent implements OnInit {
 
   getCitiesComboItems(data: ICities[]): Array<SelectItem> {
     const items: Array<SelectItem> = this.addFirstItem();
-    // const items = [];
 
     if (data) {
       data.forEach(element => {
@@ -118,7 +117,6 @@ export class PostAdComponent implements OnInit {
 
   getAreaComboItems(data: IArea[]): Array<SelectItem> {
     const items: Array<SelectItem> = this.addFirstItem();
-    // const items = [];
 
     if (data) {
       data.forEach(element => {
@@ -141,7 +139,6 @@ export class PostAdComponent implements OnInit {
 
   getPropertyTypeComboItems(data: IPropertyType[]): Array<SelectItem> {
     const items: Array<SelectItem> = this.addFirstItem();
-    // const items = [];
 
     if (data) {
       data.forEach(element => {
@@ -175,7 +172,6 @@ export class PostAdComponent implements OnInit {
 
     this.http.post('https://localhost:5001/api/Property/SaveProperty',
       formData, { headers }).subscribe(event => {
-        console.log(event);
       });
   }
 
@@ -208,9 +204,6 @@ export class PostAdComponent implements OnInit {
     };
     formData.append('property', JSON.stringify(property));
     this.appService.postAd(formData).subscribe(res => {
-      console.log(this.postAdForm.value);
-      console.log(res);
-
       setTimeout(() => {
         this.responseMessage = 'Ad posted successfully';
       }, 1000);
@@ -222,6 +215,7 @@ export class PostAdComponent implements OnInit {
       this.responseMessage = '';
     });
     this.postAdForm.reset();
+    this.fileInput.clear();
   }
 }
 
