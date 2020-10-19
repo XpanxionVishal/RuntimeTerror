@@ -210,6 +210,7 @@ export class PostAdComponent implements OnInit {
       console.log(this.postAdForm.value);
       console.log(res);
     });
+    this.postAdForm.reset();
   }
 
 
