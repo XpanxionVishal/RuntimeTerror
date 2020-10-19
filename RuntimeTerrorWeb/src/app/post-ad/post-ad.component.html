@@ -1,38 +1,38 @@
 <form [formGroup]="postAdForm">
-    <div class="p-grid">
-        <div class="p-col-12 p-md-1 p-lg-2"></div>
-        <div class="p-col-12 p-md-2 p-lg-1"><label>Owner Name</label></div>
-        <div class="p-col-12 p-md-3 p-lg-3"><input type="text" pInputText formControlName="ownerName" /></div>
-        <div class="p-col-12 p-md-2 p-lg-1"><label>Property Address</label></div>
-        <div class="p-col-12 p-md-2 p-lg-3"><textarea pInputTextarea formControlName="address"></textarea></div>
-        <div class="p-col-12 p-md-4 p-lg-2"></div>
+    <div class="p-grid" style="background-color:navajowhite; width: 75%; border-radius: 30px; margin: 0 12%;">
+        <div class="p-col-12 p-md-1 p-lg-2 margin-top"></div>
+        <div class="p-col-12 p-md-2 p-lg-1 margin-top"><label>Owner Name</label></div>
+        <div class="p-col-12 p-md-3 p-lg-3 margin-top"><input type="text" pInputText formControlName="ownerName" /></div>
+        <div class="p-col-12 p-md-2 p-lg-1 margin-top"><label>Property Address</label></div>
+        <div class="p-col-12 p-md-2 p-lg-3 margin-top"><textarea pInputTextarea autoResize="autoResize" formControlName="address"></textarea></div>
+        <div class="p-col-12 p-md-4 p-lg-2 margin-top"></div>
 
-        <div class="p-col-12 p-md-1 p-lg-2"></div>
-        <div class="p-col-12 p-md-2 p-lg-1"><label>City</label></div>
-        <div class="p-col-12 p-md-3 p-lg-3">
+        <div class="p-col-12 p-md-1 p-lg-2 margin"></div>
+        <div class="p-col-12 p-md-2 p-lg-1 margin"><label>City</label></div>
+        <div class="p-col-12 p-md-3 p-lg-3 margin">
             <p-dropdown [options]="cities" formControlName="city"></p-dropdown>
         </div>
-        <div class="p-col-12 p-md-2 p-lg-1"><label>Area</label></div>
-        <div class="p-col-12 p-md-2 p-lg-3">
+        <div class="p-col-12 p-md-2 p-lg-1 margin"><label>Area</label></div>
+        <div class="p-col-12 p-md-2 p-lg-3 margin">
             <p-dropdown [options]="area" formControlName="area"></p-dropdown>
         </div>
-        <div class="p-col-12 p-md-4 p-lg-2"></div>
+        <div class="p-col-12 p-md-4 p-lg-2 margin"></div>
 
-        <div class="p-col-12 p-md-1 p-lg-2"></div>
-        <div class="p-col-12 p-md-2 p-lg-1"><label>Type of Property</label></div>
-        <div class="p-col-12 p-md-2 p-lg-3">
+        <div class="p-col-12 p-md-1 p-lg-2 margin"></div>
+        <div class="p-col-12 p-md-2 p-lg-1 margin"><label>Type of Property</label></div>
+        <div class="p-col-12 p-md-2 p-lg-3 margin">
             <p-dropdown [options]="propertyType" formControlName="propertyType"></p-dropdown>
         </div>
-        <div class="p-col-12 p-md-2 p-lg-1"><label>Cost Per Day</label></div>
-        <div class="p-col-12 p-md-4 p-lg-3"><input type="text" pInputText formControlName="costPerDay" /></div>
-        <div class="p-col-12 p-md-4 p-lg-2"></div>
+        <div class="p-col-12 p-md-2 p-lg-1 margin"><label>Cost Per Day</label></div>
+        <div class="p-col-12 p-md-4 p-lg-3 margin"><input type="text" pInputText formControlName="costPerDay" /></div>
+        <div class="p-col-12 p-md-4 p-lg-2 margin"></div>
 
 
-        <div class="p-col-12 p-md-1 p-lg-2"></div>
-        <div class="p-col-12 p-md-2 p-lg-1"><label>Upload Pictures</label></div>
-        <div class="p-col-12 p-md-3 p-lg-3">
-            <p-fileUpload #fileInput name="templateFile[]" accept=".png , .jpg, .webp" chooseLabel="Browse/Drag" customUpload="true"
-                multiple="multiple" (uploadHandler)="onTemplateUpload()">
+        <div class="p-col-12 p-md-1 p-lg-2 margin"></div>
+        <div class="p-col-12 p-md-2 p-lg-1 margin"><label>Upload Pictures</label></div>
+        <div class="p-col-12 p-md-3 p-lg-3 margin">
+            <p-fileUpload #fileInput name="templateFile[]" accept=".png , .jpg, .webp" chooseLabel="Browse/Drag"
+                customUpload="true" multiple="multiple" (uploadHandler)="onTemplateUpload()">
                 <ng-template pTemplate="content">
                     <ul *ngIf="uploadedFiles.length">
                         <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
@@ -40,10 +40,10 @@
                 </ng-template>
             </p-fileUpload>
         </div>
-        <div class="p-col-12 p-md-2 p-lg-1">
+        <div class="p-col-12 p-md-2 p-lg-1 margin">
             <!-- <label>Property Address</label> -->
         </div>
-        <div class="p-col-12 p-md-9 p-lg-3">
+        <div class="p-col-12 p-md-9 p-lg-3 margin">
             <!-- <p-fileUpload #fileInput name="templateFile[]" accept=".png" chooseLabel="Browse/Drag" customUpload="true"
                 multiple="multiple" (uploadHandler)="onTemplateUpload()">
                 <ng-template pTemplate="content">
@@ -53,9 +53,9 @@
                 </ng-template>
             </p-fileUpload> -->
         </div>
-        <div class="p-col-12 p-md-1 p-lg-2"></div>
+        <div class="p-col-12 p-md-1 p-lg-2 margin"></div>
 
-        <div class="p-col-12 p-md-12 p-lg-12 button" style="text-align: center;">
+        <div class="p-col-12 p-md-12 p-lg-12" style="text-align: center;">
             <button pButton type="button" label="Post Ad" (click)="onPostAdClick()" class="p-button-warning"></button>
         </div>
 

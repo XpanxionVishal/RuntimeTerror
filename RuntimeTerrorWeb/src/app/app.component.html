@@ -1,4 +1,4 @@
-<form style="height: 98vh;background-color: #ffffff ;overflow: hidden;">
+<form style="height: 97vh;background-color: #ffffff ;overflow: hidden;">
     <div class="p-sm-12 ">
         <div class="menu">
             <span (click)="accomodation()" style="margin: 0em 1em 0 3em" class="menus">Find
@@ -13,7 +13,7 @@
         <div *ngIf="isAccomodation" style="width: 100%;">
             <app-find-accomodation></app-find-accomodation>
         </div>
-        <div *ngIf="isPostAd">
+        <div *ngIf="isPostAd" style=" margin: 5% 0 0 0;">
             <app-post-ad></app-post-ad>
         </div>
         <div *ngIf="isLogin" style="width: 100%;margin: 5rem; ">
