@@ -39,4 +39,8 @@ export class AppService {
   getUserDetails(email): Observable<IUser> {
     return this.httpClient.get<IUser>(environment.apiUrl + 'Login/GetUserDetails/' + email);
   }
+
+  bookProperty(sharePip: IProperties): Observable<any> {
+    return this.httpClient.put(environment.apiUrl + 'Property/BookProperty/', sharePip);
+  }
 }

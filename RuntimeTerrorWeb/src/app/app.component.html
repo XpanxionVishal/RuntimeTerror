@@ -6,9 +6,6 @@
             <span (click)="postAd()" class="menus">Post An Ad</span>
             <span *ngIf="!isSessionOn" (click)="login()" class="login-menu">Sign In/Sign Up</span>
             <span *ngIf="isSessionOn" (click)="onLogoutConfirmation()" class="login-menu">Logout</span>
-            <span *ngIf="isSessionOn" class="login-menu">
-                Hi {{userName}}
-            </span>
             <span class="tittle" style="margin-left: 25%;"><img src="/assets/home.png/" width="25" height="25"
                     style="padding: 0px 8px 4px 0;vertical-align: middle;">Safe Home</span>
         </div>
@@ -29,7 +26,8 @@
     </div>
 
     <p-dialog header="Please login for posting ad!" [draggable]="false" [(visible)]="display" modal="true">
-        <button pButton type="button" label="OK" (click)="onPopupOKClick()"
-            class="p-button-warning"></button>
+        <br />
+        <br />
+        <button pButton type="button" label="OK" (click)="onPopupOKClick()" class="p-button-warning"></button>
     </p-dialog>
 </form>
