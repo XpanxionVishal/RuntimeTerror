@@ -24,11 +24,13 @@
     height: 3.8vh;
     border-radius: 3px;
     padding: 5px;
+    font-family: cursive;
 }
 
 .p-dropdown-item {
     background-color: #ffffff;
     padding: 0 0 0 5px;
+    font-family: cursive;
 }
 
 .p-overlaypanel-content {
@@ -58,4 +60,52 @@
 }
 .p-component-overlay {
     background-color: #00000018 !important;
+}
+.p-datatable-scrollable-body > table > .p-datatable-tbody > tr > td {
+    border-left: 1px solid;
+    background-color: #ededff;
+    color: black;
+    font-family: cursive;
+}
+th {
+    /* border-left: 1px solid; */
+    font-family: cursive;
+    height: 5vh;
+}
+.p-datatable {
+    position: relative;
+    width: 98.5%;
+    margin: 0 1%;
+}
+.p-datatable-thead {
+    border: 1px solid;
+    background-color: #3599a8;
+    color: #ffffff;
+}
+
+.p-paginator {
+    height: 5vh;
+    background-color: #3599a8;
+}
+.p-datatable-scrollable-wrapper {
+    position: relative;
+    min-height: 58vh;
+}
+
+.p-paginator-current,
+.p-paginator-first,
+.p-paginator-last,
+.p-paginator-next,
+.p-paginator-page,
+.p-paginator-prev {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.p-button-label {
+    font-family: cursive;
+}
+
+label {
+    font-family: cursive;
 }

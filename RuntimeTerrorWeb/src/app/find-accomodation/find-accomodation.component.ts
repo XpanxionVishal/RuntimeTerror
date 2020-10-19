@@ -36,7 +36,8 @@ export class FindAccomodationComponent implements OnInit {
 
   onSearchClick(): void {
     this.isSearched = true;
-    this.appService.getProperties(1, 1).subscribe(properties => {
+    // this.appService.getProperties(1, 1).subscribe(properties => {
+    this.appService.getProperties(this.selectedAreaId, this.selectedProTypeId).subscribe(properties => {
       this.properties = properties;
     });
   }
